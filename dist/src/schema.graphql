@@ -1,49 +1,56 @@
 scalar DateTime
 
+# Queries and Mutations
 type Query {
-  avos(skip: Int, take: Int, where: AvoWhereInput): [Avocado]!
-  avo(id: ID!): Avocado
+  clubCategories(
+    skip: Int
+    take: Int
+    where: ClubCategoryWhereInput
+  ): [ClubCategory]!
+  clubCategory(id: ID!): ClubCategory
+  clubs(skip: Int, take: Int, where: ClubWhereInput): [Club]!
+  club(id: ID!): Club
 }
 
 type Mutation {
-  createAvo(data: AvoCreateInput!): Avocado!
+  createClubCategory(data: ClubCategoryInput!): ClubCategory!
+  deleteClubCategory(id: ID!): ClubCategory!
+  updateClubCategory(id: ID!, data: ClubCategoryInput!): ClubCategory!
+  createClub(data: ClubInput!): Club!
+  deleteClub(id: ID!): Club!
+  updateClub(id: ID!, data: ClubInput!): Club!
 }
 
+# Interfaces
 interface BaseModel {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime
-  deletedAt: DateTime
+  isActive: Int!
 }
 
-type Avocado implements BaseModel {
+# Types
+type ClubCategory implements BaseModel {
   id: ID!
+  name: String!
+  image: String!
   createdAt: DateTime!
   updatedAt: DateTime
-  deletedAt: DateTime
+  isActive: Int!
+}
 
+type Club implements BaseModel {
+  id: ID!
   name: String!
-  sku: String!
-  price: Float!
   image: String!
+  clubCategoryId: Int!
+  clubCategory: ClubCategory!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
 }
 
-input AvoCreateInput {
-  name: String!
-  price: Float!
-  sku: String!
-  image: String!
-  description: String
-  shape: String
-  hardiness: String
-  taste: String
-}
-
-input AvoWhereInput {
-  name: StringFilterInput
-  price: Float
-}
-
+# Inputs
 input StringFilterInput {
   equals: String
   in: [String]
@@ -56,4 +63,31 @@ input StringFilterInput {
   startsWith: String
   endsWith: String
   not: String
+}
+
+input boolFilterInput {
+  equals: Boolean
+}
+
+# Create
+input ClubCategoryInput {
+  name: String!
+  image: String!
+}
+
+input ClubInput {
+  name: String!
+  image: String!
+  clubCategoryId: Int!
+}
+
+# Search
+input ClubCategoryWhereInput {
+  name: StringFilterInput
+  isActive: boolFilterInput
+}
+
+input ClubWhereInput {
+  name: StringFilterInput
+  isActive: boolFilterInput
 }

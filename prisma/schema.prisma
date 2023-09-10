@@ -10,14 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Avocado {
+model Club_Category {
   id        Int       @id @default(autoincrement())
+  name      String    @unique
+  image     String
+  club      Club[]
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
-  deletedAt DateTime?
+  isActive  Boolean   @default(true)
+}
 
-  name  String
-  sku   String @unique
-  price Float
-  image String
+model Club {
+  id             Int            @id @default(autoincrement())
+  name           String         @unique
+  clubCategory   Club_Category? @relation(fields: [clubCategoryId], references: [id])
+  clubCategoryId Int?
+  image          String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime?      @updatedAt
+  isActive       Boolean        @default(true)
 }

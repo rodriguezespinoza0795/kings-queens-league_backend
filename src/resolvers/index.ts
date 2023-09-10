@@ -1,11 +1,19 @@
-import * as avo from './avocado.resolver'
+import * as clubCategory from './clubCategory.resolver'
+import * as club from './club.resolver'
 
 export default {
   Query: {
-    avo: avo.findOne,
-    avos: avo.findAll,
+    clubCategory: clubCategory.findOne,
+    clubCategories: clubCategory.findAll,
+    club: club.findOne,
+    clubs: club.findAll,
   },
   Mutation: {
-    createAvo: avo.createAvo,
+    createClubCategory: clubCategory.createClubCategory,
+    deleteClubCategory: clubCategory.deleteClubCategory,
+    updateClubCategory: clubCategory.updateClubCategory,
+    createClub: club.createClub,
+    deleteClub: club.deleteClub,
+    updateClub: club.updateClub,
   },
 }

@@ -6,7 +6,7 @@ const orm = new PrismaClient()
 
 router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
-    const result = await orm.avocado.findUnique({
+    const result = await orm.club_Category.findUnique({
         where: {
           id: parseInt(id, 10),
         },
@@ -16,14 +16,14 @@ router.get('/:id', async (req, res, next) => {
 );
 
 router.get('/', async (req, res, next) => {
-    const result = await orm.avocado.findMany()
+    const result = await orm.club_Category.findMany()
     res.send(result);
   }
 );
 
 router.post('/', async (req, res, next) => {
         const body = req.body;
-        const result = await orm.avocado.create({data:body})
+        const result = await orm.club_Category.create({data:body})
         res.send(result);
   }
 );

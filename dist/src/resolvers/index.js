@@ -23,13 +23,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const avo = __importStar(require("./avocado.resolver"));
+const clubCategory = __importStar(require("./clubCategory.resolver"));
+const club = __importStar(require("./club.resolver"));
 exports.default = {
     Query: {
-        avo: avo.findOne,
-        avos: avo.findAll,
+        clubCategory: clubCategory.findOne,
+        clubCategories: clubCategory.findAll,
+        club: club.findOne,
+        clubs: club.findAll,
     },
     Mutation: {
-        createAvo: avo.createAvo,
+        createClubCategory: clubCategory.createClubCategory,
+        deleteClubCategory: clubCategory.deleteClubCategory,
+        updateClubCategory: clubCategory.updateClubCategory,
+        createClub: club.createClub,
+        deleteClub: club.deleteClub,
+        updateClub: club.updateClub,
     },
 };

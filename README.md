@@ -11,4 +11,10 @@ Este proyecto tiene la finalidad de divertirme y practicar programación.
 * [Vercel](https://vercel.com/davidre0795/kings-queens-league-backend): Backend Deploy
 * [Figma](https://www.figma.com/file/ArqdRnjdV9u1DzjzpOVwiD/kings-queens-league): Mockups
 * [MUI](https://mui.com/): style Components
+
+### Tutorial: Crear un nuevo endpoint
+1. Agregar modelos de Prisma en prisma/schema.prisma
+2. Crear tablas en la base de datos mediante el siguiente comando: `npx prisma migrate dev --name {name}`
+3. Crear rutas crud para api REST en src/routes
+4. Create resolvers para api GraphQl en src/resolvers
   
