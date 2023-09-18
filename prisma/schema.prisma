@@ -29,4 +29,65 @@ model Club {
   createdAt      DateTime       @default(now())
   updatedAt      DateTime?      @updatedAt
   isActive       Boolean        @default(true)
+  Player         Player[]
+}
+
+model Position {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+  isActive    Boolean   @default(true)
+  Player      Player[]
+}
+
+model Player_Type {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  isActive  Boolean   @default(true)
+  Player    Player[]
+}
+
+model Player {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  lastName          String?
+  nickName          String?
+  positionId        Int
+  position          Position?           @relation(fields: [positionId], references: [id])
+  clubId            Int
+  club              Club                @relation(fields: [clubId], references: [id])
+  playerTypeId      Int
+  playerType        Player_Type         @relation(fields: [playerTypeId], references: [id])
+  image             String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime?           @updatedAt
+  isActive          Boolean             @default(true)
+  Tournament_Rounds Tournament_Rounds[]
+}
+
+model Tournament {
+  id                Int                 @id @default(autoincrement())
+  name              String              @unique
+  edition           Int
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime?           @updatedAt
+  isActive          Boolean             @default(true)
+  Tournament_Rounds Tournament_Rounds[]
+}
+
+model Tournament_Rounds {
+  id           Int         @id @default(autoincrement())
+  tournamentId Int
+  tournament   Tournament? @relation(fields: [tournamentId], references: [id])
+  round        Int
+  playerId     Int
+  player       Player?     @relation(fields: [playerId], references: [id])
+  score        Int
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime?   @updatedAt
+  isActive     Boolean     @default(true)
 }

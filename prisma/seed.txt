@@ -1,0 +1,27 @@
+INSERT INTO "public"."Club_Category"("id","name","image","createdAt","updatedAt","isActive")
+VALUES
+(1,E'Kings',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999156/szangdk9bz456spkrryj.svg',E'2023-09-18 01:05:58.584',E'2023-09-18 01:05:58.584',TRUE),
+(2,E'Queens',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999169/rhizdck8jkrllqzngcji.svg',E'2023-09-18 01:06:11.269',E'2023-09-18 01:06:11.269',TRUE),
+(3,E'Prince',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999187/llan0la8fwojwwu3ojsu.svg',E'2023-09-18 01:06:29.19',E'2023-09-18 01:06:29.19',TRUE);
+
+INSERT INTO "public"."Club"("id","name","clubCategoryId","image","createdAt","updatedAt","isActive")
+VALUES
+(1,E'Ultimate Móstoles',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999222/u6iwnfdwhyguuyapk8cs.svg',E'2023-09-18 01:07:04.116',E'2023-09-18 01:07:04.116',TRUE),
+(2,E'Aniquiladores FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999283/tjdp1sq88m35wqzjzvpn.svg',E'2023-09-18 01:08:05.351',E'2023-09-18 01:08:05.351',TRUE),
+(3,E'Jijantes FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999305/wa7uwlsvmmo0vohmwbcx.svg',E'2023-09-18 01:08:26.742',E'2023-09-18 01:08:26.742',TRUE),
+(4,E'El Barrio',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999324/zyv9xzzevmqznts2h90s.svg',E'2023-09-18 01:08:46.016',E'2023-09-18 01:08:46.016',TRUE),
+(5,E'Saiyans FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999359/strpynuc0f6odlispbcu.svg',E'2023-09-18 01:09:20.652',E'2023-09-18 01:09:20.652',TRUE),
+(6,E'Los Troncos FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999412/san1kwedqokpt2qsm0ww.png',E'2023-09-18 01:10:13.597',E'2023-09-18 01:10:13.597',TRUE),
+(7,E'Kunisports',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999483/d2hoaakqwrvmh8mujrb0.svg',E'2023-09-18 01:11:25.433',E'2023-09-18 01:11:25.433',TRUE),
+(8,E'Porcinos FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999502/byfnmwvxtjrzvoczj21h.svg',E'2023-09-18 01:11:44.192',E'2023-09-18 01:11:44.192',TRUE),
+(9,E'Rayo de Barcelona',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999543/dymlgtqa9h6chtg9vyf2.svg',E'2023-09-18 01:12:25.131',E'2023-09-18 01:12:25.131',TRUE),
+(10,E'xBuyer Team',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999560/u8didv99gmfayraq6jeq.svg',E'2023-09-18 01:12:42.458',E'2023-09-18 01:12:42.458',TRUE),
+(11,E'PIO FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999589/xonxmbwi9orzndpylx2k.svg',E'2023-09-18 01:13:11.84',E'2023-09-18 01:13:11.84',TRUE),
+(12,E'1K FC',1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999624/we5nih5lwos5iwoosx5z.svg',E'2023-09-18 01:13:47.059',E'2023-09-18 01:13:47.059',TRUE);
+
+INSERT INTO "public"."Position"("id","name","description","createdAt","updatedAt","isActive")
+VALUES
+(1,E'PT',E'Portero',E'2023-09-18 13:54:11.093',E'2023-09-18 13:57:34.868',TRUE),
+(2,E'DF',E'Defensa',E'2023-09-18 13:57:49.222',E'2023-09-18 13:57:49.222',TRUE),
+(3,E'MC',E'Mediocampista',E'2023-09-18 13:57:58.621',E'2023-09-18 13:57:58.621',TRUE),
+(4,E'DL',E'Delantero',E'2023-09-18 13:58:05.67',E'2023-09-18 13:58:05.67',TRUE);

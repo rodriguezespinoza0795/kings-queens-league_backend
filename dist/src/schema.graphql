@@ -2,14 +2,12 @@ scalar DateTime
 
 # Queries and Mutations
 type Query {
-  clubCategories(
-    skip: Int
-    take: Int
-    where: ClubCategoryWhereInput
-  ): [ClubCategory]!
+  clubCategories(skip: Int, take: Int, where: NameWhereInput): [ClubCategory]!
   clubCategory(id: ID!): ClubCategory
-  clubs(skip: Int, take: Int, where: ClubWhereInput): [Club]!
+  clubs(skip: Int, take: Int, where: NameWhereInput): [Club]!
   club(id: ID!): Club
+  positions(skip: Int, take: Int, where: NameWhereInput): [Position]!
+  position(id: ID!): Position
 }
 
 type Mutation {
@@ -19,6 +17,9 @@ type Mutation {
   createClub(data: ClubInput!): Club!
   deleteClub(id: ID!): Club!
   updateClub(id: ID!, data: ClubInput!): Club!
+  createPosition(data: PositionInput!): Club!
+  deletePosition(id: ID!): Position!
+  updatePosition(id: ID!, data: PositionInput!): Position!
 }
 
 # Interfaces
@@ -45,6 +46,15 @@ type Club implements BaseModel {
   image: String!
   clubCategoryId: Int!
   clubCategory: ClubCategory!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
+type Position implements BaseModel {
+  id: ID!
+  name: String!
+  description: String!
   createdAt: DateTime!
   updatedAt: DateTime
   isActive: Int!
@@ -81,13 +91,13 @@ input ClubInput {
   clubCategoryId: Int!
 }
 
-# Search
-input ClubCategoryWhereInput {
-  name: StringFilterInput
-  isActive: boolFilterInput
+input PositionInput {
+  name: String!
+  description: String!
 }
 
-input ClubWhereInput {
+# Search
+input NameWhereInput {
   name: StringFilterInput
   isActive: boolFilterInput
 }
