@@ -8,6 +8,8 @@ type Query {
   club(id: ID!): Club
   positions(skip: Int, take: Int, where: NameWhereInput): [Position]!
   position(id: ID!): Position
+  playerTypes(skip: Int, take: Int, where: NameWhereInput): [PlayerType]!
+  playerType(id: ID!): PlayerType
 }
 
 type Mutation {
@@ -20,6 +22,9 @@ type Mutation {
   createPosition(data: PositionInput!): Club!
   deletePosition(id: ID!): Position!
   updatePosition(id: ID!, data: PositionInput!): Position!
+  createPlayerType(data: NameInput!): PlayerType!
+  deletePlayerType(id: ID!): PlayerType!
+  updatePlayerType(id: ID!, data: NameInput!): PlayerType!
 }
 
 # Interfaces
@@ -60,6 +65,14 @@ type Position implements BaseModel {
   isActive: Int!
 }
 
+type PlayerType implements BaseModel {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
 # Inputs
 input StringFilterInput {
   equals: String
@@ -94,6 +107,10 @@ input ClubInput {
 input PositionInput {
   name: String!
   description: String!
+}
+
+input NameInput {
+  name: String!
 }
 
 # Search
