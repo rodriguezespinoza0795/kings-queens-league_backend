@@ -10,6 +10,8 @@ type Query {
   position(id: ID!): Position
   playerTypes(skip: Int, take: Int, where: NameWhereInput): [PlayerType]!
   playerType(id: ID!): PlayerType
+  players(skip: Int, take: Int, where: PlayerWhereInput): [Player]!
+  player(id: ID!): Player
 }
 
 type Mutation {
@@ -25,6 +27,9 @@ type Mutation {
   createPlayerType(data: NameInput!): PlayerType!
   deletePlayerType(id: ID!): PlayerType!
   updatePlayerType(id: ID!, data: NameInput!): PlayerType!
+  createPlayer(data: PlayerInput!): Player!
+  deletePlayer(id: ID!): Player!
+  updatePlayer(id: ID!, data: PlayerInput!): Player!
 }
 
 # Interfaces
@@ -73,6 +78,23 @@ type PlayerType implements BaseModel {
   isActive: Int!
 }
 
+type Player implements BaseModel {
+  id: ID!
+  name: String!
+  lastName: String
+  nickName: String
+  positionId: Int!
+  position: Position!
+  clubId: Int!
+  club: Club!
+  playerTypeId: Int!
+  playerType: PlayerType!
+  image: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
 # Inputs
 input StringFilterInput {
   equals: String
@@ -86,6 +108,20 @@ input StringFilterInput {
   startsWith: String
   endsWith: String
   not: String
+}
+
+input NumberFilterInput {
+  equals: Int
+  in: [Int]
+  notIn: [Int]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  contains: Int
+  startsWith: Int
+  endsWith: Int
+  not: Int
 }
 
 input boolFilterInput {
@@ -109,6 +145,16 @@ input PositionInput {
   description: String!
 }
 
+input PlayerInput {
+  name: String!
+  lastName: String
+  nickName: String
+  positionId: Int!
+  clubId: Int!
+  playerTypeId: Int!
+  image: String!
+}
+
 input NameInput {
   name: String!
 }
@@ -116,5 +162,12 @@ input NameInput {
 # Search
 input NameWhereInput {
   name: StringFilterInput
+  isActive: boolFilterInput
+}
+
+input PlayerWhereInput {
+  playerTypeId: NumberFilterInput
+  positionId: NumberFilterInput
+  clubId: NumberFilterInput
   isActive: boolFilterInput
 }
