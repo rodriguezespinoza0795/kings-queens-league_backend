@@ -11,25 +11,29 @@ datasource db {
 }
 
 model Club_Category {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  image     String
-  club      Club[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
-  isActive  Boolean   @default(true)
+  id         Int          @id @default(autoincrement())
+  name       String       @unique
+  image      String
+  club       Club[]
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime?    @updatedAt
+  isActive   Boolean      @default(true)
+  Tournament Tournament[]
 }
 
 model Club {
-  id             Int            @id @default(autoincrement())
-  name           String         @unique
-  clubCategory   Club_Category? @relation(fields: [clubCategoryId], references: [id])
-  clubCategoryId Int?
-  image          String
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime?      @updatedAt
-  isActive       Boolean        @default(true)
-  Player         Player[]
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  clubCategory     Club_Category?     @relation(fields: [clubCategoryId], references: [id])
+  clubCategoryId   Int?
+  image            String
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime?          @updatedAt
+  isActive         Boolean            @default(true)
+  Player           Player[]
+  Tournament_group Tournament_group[]
+  clubHome         Tournament_Round[] @relation("clubHome")
+  clubAway         Tournament_Round[] @relation("clubAway")
 }
 
 model Position {
@@ -52,42 +56,88 @@ model Player_Type {
 }
 
 model Player {
-  id                Int                 @id @default(autoincrement())
-  name              String
-  lastName          String?
-  nickName          String?
-  positionId        Int
-  position          Position?           @relation(fields: [positionId], references: [id])
-  clubId            Int
-  club              Club                @relation(fields: [clubId], references: [id])
-  playerTypeId      Int
-  playerType        Player_Type         @relation(fields: [playerTypeId], references: [id])
-  image             String
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime?           @updatedAt
-  isActive          Boolean             @default(true)
-  Tournament_Rounds Tournament_Rounds[]
+  id           Int            @id @default(autoincrement())
+  name         String
+  lastName     String?
+  nickName     String?
+  positionId   Int
+  position     Position?      @relation(fields: [positionId], references: [id])
+  clubId       Int
+  club         Club           @relation(fields: [clubId], references: [id])
+  playerTypeId Int
+  playerType   Player_Type    @relation(fields: [playerTypeId], references: [id])
+  image        String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime?      @updatedAt
+  isActive     Boolean        @default(true)
+  Player_Round Player_Round[]
 }
 
 model Tournament {
-  id                Int                 @id @default(autoincrement())
-  name              String              @unique
-  edition           Int
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime?           @updatedAt
-  isActive          Boolean             @default(true)
-  Tournament_Rounds Tournament_Rounds[]
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  edition          Int
+  clubCategory     Club_Category      @relation(fields: [clubCategoryId], references: [id])
+  clubCategoryId   Int
+  numGroup         Int
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime?          @updatedAt
+  isActive         Boolean            @default(true)
+  Tournament_group Tournament_group[]
+  Tournament_Round Tournament_Round[]
 }
 
-model Tournament_Rounds {
+model Tournament_group {
   id           Int         @id @default(autoincrement())
+  name         String
+  clubId       Int
+  club         Club        @relation(fields: [clubId], references: [id])
   tournamentId Int
   tournament   Tournament? @relation(fields: [tournamentId], references: [id])
-  round        Int
-  playerId     Int
-  player       Player?     @relation(fields: [playerId], references: [id])
-  score        Int
   createdAt    DateTime    @default(now())
   updatedAt    DateTime?   @updatedAt
   isActive     Boolean     @default(true)
+}
+
+model Tournament_Round {
+  id           Int            @id @default(autoincrement())
+  round        Int
+  tournamentId Int
+  tournament   Tournament?    @relation(fields: [tournamentId], references: [id])
+  clubIdHome   Int
+  clubHome     Club           @relation("clubHome", fields: [clubIdHome], references: [id])
+  clubIdAway   Int
+  clubAway     Club           @relation("clubAway", fields: [clubIdAway], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime?      @updatedAt
+  isActive     Boolean        @default(true)
+  Player_Round Player_Round[]
+  Round_Match  Round_Match?
+}
+
+model Round_Match {
+  id                Int              @id @default(autoincrement())
+  roundId           Int              @unique
+  round             Tournament_Round @relation(fields: [roundId], references: [id])
+  clubHomeScore     Int
+  clubAwayScore     Int
+  clubHomeScoreDraw Int?
+  clubAwayScoreDraw Int?
+  clubHomePoints    Int
+  clubAwayPoint     Int
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime?        @updatedAt
+  isActive          Boolean          @default(true)
+}
+
+model Player_Round {
+  id        Int              @id @default(autoincrement())
+  roundId   Int
+  round     Tournament_Round @relation(fields: [roundId], references: [id])
+  playerId  Int
+  player    Player           @relation(fields: [playerId], references: [id])
+  score     Int
+  createdAt DateTime         @default(now())
+  updatedAt DateTime?        @updatedAt
+  isActive  Boolean          @default(true)
 }

@@ -28,6 +28,7 @@ const club = __importStar(require("./club.resolver"));
 const position = __importStar(require("./position.resolver"));
 const playerType = __importStar(require("./playerType.resolver"));
 const player = __importStar(require("./player.resolver"));
+const tournament = __importStar(require("./tournament.resolver"));
 exports.default = {
     Query: {
         clubCategory: clubCategory.findOne,
@@ -40,6 +41,8 @@ exports.default = {
         playerTypes: playerType.findAll,
         player: player.findOne,
         players: player.findAll,
+        tournament: tournament.findOne,
+        tournaments: tournament.findAll,
     },
     Mutation: {
         createClubCategory: clubCategory.createClubCategory,
@@ -57,5 +60,8 @@ exports.default = {
         createPlayer: player.createPlayer,
         deletePlayer: player.deletePlayer,
         updatePlayer: player.updatePlayer,
+        createTournament: tournament.createTournament,
+        deleteTournament: tournament.deleteTournament,
+        updateTournament: tournament.updateTournament,
     },
 };

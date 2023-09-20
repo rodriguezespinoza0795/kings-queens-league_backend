@@ -3,6 +3,7 @@ import * as club from './club.resolver'
 import * as position from './position.resolver'
 import * as playerType from './playerType.resolver'
 import * as player from './player.resolver'
+import * as tournament from './tournament.resolver'
 
 export default {
   Query: {
@@ -16,6 +17,8 @@ export default {
     playerTypes: playerType.findAll,
     player: player.findOne,
     players: player.findAll,
+    tournament: tournament.findOne,
+    tournaments: tournament.findAll,
   },
   Mutation: {
     createClubCategory: clubCategory.createClubCategory,
@@ -33,5 +36,8 @@ export default {
     createPlayer: player.createPlayer,
     deletePlayer: player.deletePlayer,
     updatePlayer: player.updatePlayer,
+    createTournament: tournament.createTournament,
+    deleteTournament: tournament.deleteTournament,
+    updateTournament: tournament.updateTournament,
   },
 }

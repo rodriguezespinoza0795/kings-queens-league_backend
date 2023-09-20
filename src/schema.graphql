@@ -12,6 +12,8 @@ type Query {
   playerType(id: ID!): PlayerType
   players(skip: Int, take: Int, where: PlayerWhereInput): [Player]!
   player(id: ID!): Player
+  tournaments(skip: Int, take: Int, where: NameWhereInput): [Tournament]!
+  tournament(id: ID!): Tournament
 }
 
 type Mutation {
@@ -30,6 +32,9 @@ type Mutation {
   createPlayer(data: PlayerInput!): Player!
   deletePlayer(id: ID!): Player!
   updatePlayer(id: ID!, data: PlayerInput!): Player!
+  createTournament(data: TournamentInput!): Tournament!
+  deleteTournament(id: ID!): Tournament!
+  updateTournament(id: ID!, data: TournamentInput!): Tournament!
 }
 
 # Interfaces
@@ -95,6 +100,18 @@ type Player implements BaseModel {
   isActive: Int!
 }
 
+type Tournament implements BaseModel {
+  id: ID!
+  name: String!
+  edition: Int!
+  clubCategoryId: Int!
+  clubCategory: ClubCategory!
+  numGroup: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
 # Inputs
 input StringFilterInput {
   equals: String
@@ -153,6 +170,13 @@ input PlayerInput {
   clubId: Int!
   playerTypeId: Int!
   image: String!
+}
+
+input TournamentInput {
+  name: String!
+  edition: Int!
+  clubCategoryId: Int!
+  numGroup: Int!
 }
 
 input NameInput {
