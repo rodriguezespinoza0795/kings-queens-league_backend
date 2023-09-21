@@ -30,6 +30,7 @@ const playerType = __importStar(require("./playerType.resolver"));
 const player = __importStar(require("./player.resolver"));
 const tournament = __importStar(require("./tournament.resolver"));
 const tournamentGroup = __importStar(require("./tournamentGroup.resolver"));
+const tournamentRound = __importStar(require("./tournamentRound.resolver"));
 exports.default = {
     Query: {
         clubCategory: clubCategory.findOne,
@@ -46,6 +47,8 @@ exports.default = {
         tournaments: tournament.findAll,
         tournamentGroup: tournamentGroup.findOne,
         tournamentGroups: tournamentGroup.findAll,
+        tournamentRound: tournamentRound.findOne,
+        tournamentRounds: tournamentRound.findAll,
     },
     Mutation: {
         createClubCategory: clubCategory.createClubCategory,
@@ -69,5 +72,8 @@ exports.default = {
         createTournamentGroup: tournamentGroup.createTournamentGroup,
         deleteTournamentGroup: tournamentGroup.deleteTournamentGroup,
         updateTournamentGroup: tournamentGroup.updateTournamentGroup,
+        createTournamentRound: tournamentRound.createTournamentRound,
+        deleteTournamentRound: tournamentRound.deleteTournamentRound,
+        updateTournamentRound: tournamentRound.updateTournamentRound,
     },
 };

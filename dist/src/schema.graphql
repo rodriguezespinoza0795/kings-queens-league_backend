@@ -4,7 +4,7 @@ scalar DateTime
 type Query {
   clubCategories(skip: Int, take: Int, where: NameWhereInput): [ClubCategory]!
   clubCategory(id: ID!): ClubCategory
-  clubs(skip: Int, take: Int, where: NameWhereInput): [Club]!
+  clubs(skip: Int, take: Int, where: ClubWhereInput): [Club]!
   club(id: ID!): Club
   positions(skip: Int, take: Int, where: NameWhereInput): [Position]!
   position(id: ID!): Position
@@ -20,6 +20,12 @@ type Query {
     where: TournamentGroupWhereInput
   ): [TournamentGroup]!
   tournamentGroup(id: ID!): TournamentGroup
+  tournamentRounds(
+    skip: Int
+    take: Int
+    where: TournamentRoundWhereInput
+  ): [TournamentRound]!
+  tournamentRound(id: ID!): TournamentRound
 }
 
 type Mutation {
@@ -43,10 +49,13 @@ type Mutation {
   updateTournament(id: ID!, data: TournamentInput!): Tournament!
   createTournamentGroup(data: [TournamentGroupInput]!): Count!
   deleteTournamentGroup(id: ID!): TournamentGroup!
-  updateTournamentGroup(
-    where: TournamentGroupUpdateWhereInput!
-    data: NameInput!
-  ): Count!
+  updateTournamentGroup(where: IdUpdateWhereInput!, data: NameInput!): Count!
+  createTournamentRound(data: [TournamentRoundInput]!): Count!
+  deleteTournamentRound(id: ID!): TournamentRound!
+  updateTournamentRound(
+    id: ID!
+    data: TournamentRoundUpdateInput!
+  ): TournamentRound!
 }
 
 # Interfaces
@@ -136,6 +145,20 @@ type TournamentGroup implements BaseModel {
   isActive: Int!
 }
 
+type TournamentRound implements BaseModel {
+  id: ID!
+  tournamentId: Int!
+  tournament: Tournament!
+  clubIdHome: Int!
+  clubHome: Club!
+  clubIdAway: Int!
+  clubAway: Club!
+  round: Int
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
 type Count {
   count: Int
 }
@@ -213,12 +236,30 @@ input TournamentGroupInput {
   tournamentId: Int!
 }
 
+input TournamentRoundInput {
+  tournamentId: Int!
+  clubIdHome: Int!
+  clubIdAway: Int!
+  round: Int!
+}
+
+input TournamentRoundUpdateInput {
+  clubIdHome: Int!
+  clubIdAway: Int!
+}
+
 input NameInput {
   name: String!
 }
 
 # Search
 input NameWhereInput {
+  name: StringFilterInput
+  isActive: boolFilterInput
+}
+
+input ClubWhereInput {
+  clubCategoryId: NumberFilterInput
   name: StringFilterInput
   isActive: boolFilterInput
 }
@@ -236,6 +277,14 @@ input TournamentGroupWhereInput {
   isActive: boolFilterInput
 }
 
-input TournamentGroupUpdateWhereInput {
+input TournamentRoundWhereInput {
+  tournamentId: NumberFilterInput
+  cliendIdHome: NumberFilterInput
+  cliendIdAway: NumberFilterInput
+  round: NumberFilterInput
+  isActive: boolFilterInput
+}
+
+input IdUpdateWhereInput {
   id: NumberFilterInput
 }
