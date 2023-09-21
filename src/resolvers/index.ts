@@ -4,6 +4,7 @@ import * as position from './position.resolver'
 import * as playerType from './playerType.resolver'
 import * as player from './player.resolver'
 import * as tournament from './tournament.resolver'
+import * as tournamentGroup from './tournamentGroup.resolver'
 
 export default {
   Query: {
@@ -19,6 +20,8 @@ export default {
     players: player.findAll,
     tournament: tournament.findOne,
     tournaments: tournament.findAll,
+    tournamentGroup: tournamentGroup.findOne,
+    tournamentGroups: tournamentGroup.findAll,
   },
   Mutation: {
     createClubCategory: clubCategory.createClubCategory,
@@ -39,5 +42,8 @@ export default {
     createTournament: tournament.createTournament,
     deleteTournament: tournament.deleteTournament,
     updateTournament: tournament.updateTournament,
+    createTournamentGroup: tournamentGroup.createTournamentGroup,
+    deleteTournamentGroup: tournamentGroup.deleteTournamentGroup,
+    updateTournamentGroup: tournamentGroup.updateTournamentGroup,
   },
 }

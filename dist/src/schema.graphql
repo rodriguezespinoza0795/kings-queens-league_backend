@@ -14,6 +14,12 @@ type Query {
   player(id: ID!): Player
   tournaments(skip: Int, take: Int, where: NameWhereInput): [Tournament]!
   tournament(id: ID!): Tournament
+  tournamentGroups(
+    skip: Int
+    take: Int
+    where: TournamentGroupWhereInput
+  ): [TournamentGroup]!
+  tournamentGroup(id: ID!): TournamentGroup
 }
 
 type Mutation {
@@ -35,6 +41,12 @@ type Mutation {
   createTournament(data: TournamentInput!): Tournament!
   deleteTournament(id: ID!): Tournament!
   updateTournament(id: ID!, data: TournamentInput!): Tournament!
+  createTournamentGroup(data: [TournamentGroupInput]!): Count!
+  deleteTournamentGroup(id: ID!): TournamentGroup!
+  updateTournamentGroup(
+    where: TournamentGroupUpdateWhereInput!
+    data: NameInput!
+  ): Count!
 }
 
 # Interfaces
@@ -112,6 +124,22 @@ type Tournament implements BaseModel {
   isActive: Int!
 }
 
+type TournamentGroup implements BaseModel {
+  id: ID!
+  name: String!
+  clubId: Int!
+  club: Club!
+  tournamentId: Int!
+  tournament: Tournament!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
+type Count {
+  count: Int
+}
+
 # Inputs
 input StringFilterInput {
   equals: String
@@ -179,6 +207,12 @@ input TournamentInput {
   numGroup: Int!
 }
 
+input TournamentGroupInput {
+  name: String!
+  clubId: Int!
+  tournamentId: Int!
+}
+
 input NameInput {
   name: String!
 }
@@ -194,4 +228,14 @@ input PlayerWhereInput {
   positionId: NumberFilterInput
   clubId: NumberFilterInput
   isActive: boolFilterInput
+}
+
+input TournamentGroupWhereInput {
+  name: StringFilterInput
+  tournamentId: NumberFilterInput
+  isActive: boolFilterInput
+}
+
+input TournamentGroupUpdateWhereInput {
+  id: NumberFilterInput
 }

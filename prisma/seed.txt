@@ -193,3 +193,22 @@ VALUES
 (142,E'John',E'de la Cruz',E'',4,11,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695146610/nkfulba5r2qy3kpdm51p.png',E'2023-09-19 18:03:30.925',E'2023-09-19 18:03:30.925',TRUE),
 (143,E'Daniel',E'Ruiz',E'',4,12,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695146669/bu9xezvcvtchyimtl5pc.png',E'2023-09-19 18:04:29.709',E'2023-09-19 18:04:29.709',TRUE),
 (144,E'Albert',E'Ruiz',E'',4,12,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695146720/oshtybgcohr4wnfaef0t.png',E'2023-09-19 18:05:20.681',E'2023-09-19 18:05:20.681',TRUE);
+
+INSERT INTO "public"."Tournament"("id","name","edition","clubCategoryId","numGroup","createdAt","updatedAt","isActive")
+VALUES
+(1,E'Kings Cup',1,1,2,E'2023-09-20 03:57:40.533',E'2023-09-20 04:00:23.747',TRUE);
+
+INSERT INTO "public"."Tournament_Group"("id","name","clubId","tournamentId","createdAt","updatedAt","isActive")
+VALUES
+(1,E'A',1,1,E'2023-09-21 01:42:56.294',E'2023-09-21 02:14:38.235',TRUE),
+(3,E'A',3,1,E'2023-09-21 01:42:56.294',E'2023-09-21 02:14:38.235',TRUE),
+(6,E'A',6,1,E'2023-09-21 01:42:56.294',E'2023-09-21 02:14:38.235',TRUE),
+(8,E'A',8,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(10,E'A',10,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(11,E'A',11,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(2,E'B',2,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(4,E'B',4,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(5,E'B',5,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(7,E'B',7,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(9,E'B',9,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE),
+(12,E'B',12,1,E'2023-09-21 01:42:56.294',E'2023-09-21 01:42:56.294',TRUE);

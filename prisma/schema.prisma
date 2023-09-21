@@ -31,7 +31,7 @@ model Club {
   updatedAt        DateTime?          @updatedAt
   isActive         Boolean            @default(true)
   Player           Player[]
-  Tournament_group Tournament_group[]
+  Tournament_group Tournament_Group[]
   clubHome         Tournament_Round[] @relation("clubHome")
   clubAway         Tournament_Round[] @relation("clubAway")
 }
@@ -83,11 +83,11 @@ model Tournament {
   createdAt        DateTime           @default(now())
   updatedAt        DateTime?          @updatedAt
   isActive         Boolean            @default(true)
-  Tournament_group Tournament_group[]
+  Tournament_group Tournament_Group[]
   Tournament_Round Tournament_Round[]
 }
 
-model Tournament_group {
+model Tournament_Group {
   id           Int         @id @default(autoincrement())
   name         String
   clubId       Int
