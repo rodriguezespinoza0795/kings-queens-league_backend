@@ -6,6 +6,7 @@ import * as player from './player.resolver'
 import * as tournament from './tournament.resolver'
 import * as tournamentGroup from './tournamentGroup.resolver'
 import * as tournamentRound from './tournamentRound.resolver'
+import * as playerRound from './playerRound.resolver'
 
 
 export default {
@@ -26,6 +27,8 @@ export default {
     tournamentGroups: tournamentGroup.findAll,
     tournamentRound: tournamentRound.findOne,
     tournamentRounds: tournamentRound.findAll,
+    playerRound: playerRound.findOne,
+    playerRounds: playerRound.findAll,
   },
   Mutation: {
     createClubCategory: clubCategory.createClubCategory,
@@ -52,5 +55,8 @@ export default {
     createTournamentRound: tournamentRound.createTournamentRound,
     deleteTournamentRound: tournamentRound.deleteTournamentRound,
     updateTournamentRound: tournamentRound.updateTournamentRound,
+    createPlayerRound: playerRound.createPlayerRound,
+    deletePlayerRound: playerRound.deletePlayerRound,
+    updatePlayerRound: playerRound.updatePlayerRound,
   },
 }

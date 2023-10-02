@@ -26,6 +26,12 @@ type Query {
     where: TournamentRoundWhereInput
   ): [TournamentRound]!
   tournamentRound(id: ID!): TournamentRound
+  playerRounds(
+    skip: Int
+    take: Int
+    where: PlayerRoundWhereInput
+  ): [PlayerRound]!
+  playerRound(id: ID!): PlayerRound
 }
 
 type Mutation {
@@ -56,6 +62,9 @@ type Mutation {
     id: ID!
     data: TournamentRoundUpdateInput!
   ): TournamentRound!
+  createPlayerRound(data: [PlayerRoundInput]!): Count!
+  deletePlayerRound(id: ID!): PlayerRound!
+  updatePlayerRound(id: ID!, data: PlayerRoundUpdateInput!): PlayerRound!
 }
 
 # Interfaces
@@ -80,6 +89,7 @@ type Club implements BaseModel {
   id: ID!
   name: String!
   image: String!
+  color: String!
   clubCategoryId: Int!
   clubCategory: ClubCategory!
   createdAt: DateTime!
@@ -154,6 +164,18 @@ type TournamentRound implements BaseModel {
   clubIdAway: Int!
   clubAway: Club!
   round: Int
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
+type PlayerRound implements BaseModel {
+  id: ID!
+  roundId: Int!
+  round: TournamentRound!
+  playerId: Int!
+  player: Player!
+  score: Int!
   createdAt: DateTime!
   updatedAt: DateTime
   isActive: Int!
@@ -243,9 +265,19 @@ input TournamentRoundInput {
   round: Int!
 }
 
+input PlayerRoundInput {
+  roundId: Int
+  playerId: Int
+  score: Int
+}
+
 input TournamentRoundUpdateInput {
   clubIdHome: Int!
   clubIdAway: Int!
+}
+
+input PlayerRoundUpdateInput {
+  score: Int!
 }
 
 input NameInput {
@@ -282,6 +314,13 @@ input TournamentRoundWhereInput {
   cliendIdHome: NumberFilterInput
   cliendIdAway: NumberFilterInput
   round: NumberFilterInput
+  isActive: boolFilterInput
+}
+
+input PlayerRoundWhereInput {
+  roundId: NumberFilterInput
+  round: TournamentRoundWhereInput
+  playerId: NumberFilterInput
   isActive: boolFilterInput
 }
 
