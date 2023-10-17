@@ -7,6 +7,7 @@ import * as tournament from './tournament.resolver'
 import * as tournamentGroup from './tournamentGroup.resolver'
 import * as tournamentRound from './tournamentRound.resolver'
 import * as playerRound from './playerRound.resolver'
+import * as user from './user.resolver'
 
 
 export default {
@@ -58,5 +59,8 @@ export default {
     createPlayerRound: playerRound.createPlayerRound,
     deletePlayerRound: playerRound.deletePlayerRound,
     updatePlayerRound: playerRound.updatePlayerRound,
+    createUser: user.createUser,
+    signIn: user.signIn,
+    validateEmail: user.validateEmail
   },
 }

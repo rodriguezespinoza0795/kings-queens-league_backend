@@ -65,6 +65,9 @@ type Mutation {
   createPlayerRound(data: [PlayerRoundInput]!): Count!
   deletePlayerRound(id: ID!): PlayerRound!
   updatePlayerRound(id: ID!, data: PlayerRoundUpdateInput!): PlayerRound!
+  createUser(data: UserInput!): User!
+  signIn(data: UserSignInInput!): AuthenticationResponse!
+  validateEmail(data: UserValidateEmailInput!): User!
 }
 
 # Interfaces
@@ -76,6 +79,20 @@ interface BaseModel {
 }
 
 # Types
+type User implements BaseModel {
+  id: ID!
+  username: String!
+  image: String
+  email: String!
+  password: String!
+  verified: Int!
+  code: Int!
+  codeEffectiveDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
 type ClubCategory implements BaseModel {
   id: ID!
   name: String!
@@ -185,6 +202,10 @@ type Count {
   count: Int
 }
 
+type AuthenticationResponse {
+  token: String!
+}
+
 # Inputs
 input StringFilterInput {
   equals: String
@@ -219,6 +240,21 @@ input boolFilterInput {
 }
 
 # Create
+input UserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+input UserSignInInput {
+  email: String!
+  password: String!
+}
+
+input UserValidateEmailInput {
+  email: String!
+  code: Int!
+}
+
 input ClubCategoryInput {
   name: String!
   image: String!

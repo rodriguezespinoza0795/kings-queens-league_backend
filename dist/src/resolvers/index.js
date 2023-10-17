@@ -32,6 +32,7 @@ const tournament = __importStar(require("./tournament.resolver"));
 const tournamentGroup = __importStar(require("./tournamentGroup.resolver"));
 const tournamentRound = __importStar(require("./tournamentRound.resolver"));
 const playerRound = __importStar(require("./playerRound.resolver"));
+const user = __importStar(require("./user.resolver"));
 exports.default = {
     Query: {
         clubCategory: clubCategory.findOne,
@@ -81,5 +82,8 @@ exports.default = {
         createPlayerRound: playerRound.createPlayerRound,
         deletePlayerRound: playerRound.deletePlayerRound,
         updatePlayerRound: playerRound.updatePlayerRound,
+        createUser: user.createUser,
+        signIn: user.signIn,
+        validateEmail: user.validateEmail
     },
 };
