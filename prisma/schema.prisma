@@ -35,9 +35,21 @@ model Club_Category {
   Tournament Tournament[]
 }
 
+model Club_President {
+  id        Int       @id @default(autoincrement())
+  name      String
+  image     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  isActive  Boolean   @default(true)
+  Club      Club[]
+}
+
 model Club {
   id               Int                @id @default(autoincrement())
   name             String
+  clubPresident    Club_President?    @relation(fields: [clubPresidentId], references: [id])
+  clubPresidentId  Int?
   clubCategory     Club_Category?     @relation(fields: [clubCategoryId], references: [id])
   clubCategoryId   Int?
   image            String
