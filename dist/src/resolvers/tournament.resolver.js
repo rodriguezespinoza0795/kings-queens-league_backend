@@ -3,6 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTournament = exports.updateTournament = exports.createTournament = exports.findOne = exports.findAll = void 0;
 async function findAll(parent, args, context) {
     return context.orm.tournament.findMany({
+        orderBy: [
+            {
+                id: 'asc',
+            },
+        ],
         where: args.where,
         skip: args.skip,
         take: args.take,

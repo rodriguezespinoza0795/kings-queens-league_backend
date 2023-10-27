@@ -37,12 +37,12 @@ model Club_Category {
 
 model Club_President {
   id        Int       @id @default(autoincrement())
-  name      String
+  name      String    @unique
   image     String
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
   isActive  Boolean   @default(true)
-  Club      Club[]
+  club      Club[]
 }
 
 model Club {

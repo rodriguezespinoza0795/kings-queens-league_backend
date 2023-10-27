@@ -9,6 +9,11 @@ export async function findAll(
   context: ResolverContext
 ): Promise<Tournament_Group[]> {
   return context.orm.tournament_Group.findMany({
+    orderBy: [
+      {
+        id: 'asc',
+      },
+    ],
     where: args.where,
     skip: args.skip,
     take: args.take,

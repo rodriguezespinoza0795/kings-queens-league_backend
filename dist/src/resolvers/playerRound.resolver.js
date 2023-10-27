@@ -3,6 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletePlayerRound = exports.updatePlayerRound = exports.createPlayerRound = exports.findOne = exports.findAll = void 0;
 async function findAll(parent, args, context) {
     return context.orm.player_Round.findMany({
+        orderBy: [
+            {
+                id: 'asc',
+            },
+        ],
         where: args.where,
         skip: args.skip,
         take: args.take,

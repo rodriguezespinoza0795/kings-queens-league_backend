@@ -32,6 +32,8 @@ type Query {
     where: PlayerRoundWhereInput
   ): [PlayerRound]!
   playerRound(id: ID!): PlayerRound
+  clubPresidents(skip: Int, take: Int, where: NameWhereInput): [ClubPresident]!
+  clubPresident(id: ID!): ClubPresident
 }
 
 type Mutation {
@@ -65,6 +67,9 @@ type Mutation {
   createPlayerRound(data: [PlayerRoundInput]!): Count!
   deletePlayerRound(id: ID!): PlayerRound!
   updatePlayerRound(id: ID!, data: PlayerRoundUpdateInput!): PlayerRound!
+  createClubPresident(data: ClubPresidentInput!): ClubPresident!
+  deleteClubPresident(id: ID!): ClubPresident!
+  updateClubPresident(id: ID!, data: ClubPresidentInput!): ClubPresident!
   createUser(data: UserInput!): User!
   signIn(data: UserSignInInput!): AuthenticationResponse!
   validateEmail(data: UserValidateEmailInput!): User!
@@ -109,6 +114,18 @@ type Club implements BaseModel {
   color: String!
   clubCategoryId: Int!
   clubCategory: ClubCategory!
+  clubPresidentId: Int!
+  clubPresident: ClubPresident!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
+type ClubPresident implements BaseModel {
+  id: ID!
+  name: String!
+  image: String!
+  club: [Club!]
   createdAt: DateTime!
   updatedAt: DateTime
   isActive: Int!
@@ -264,6 +281,11 @@ input ClubInput {
   name: String!
   image: String!
   clubCategoryId: Int!
+}
+
+input ClubPresidentInput {
+  name: String!
+  image: String!
 }
 
 input PositionInput {

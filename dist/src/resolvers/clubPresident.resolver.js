@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteClub = exports.updateClub = exports.createClub = exports.findOne = exports.findAll = void 0;
+exports.deleteClubPresident = exports.updateClubPresident = exports.createClubPresident = exports.findOne = exports.findAll = void 0;
 async function findAll(parent, args, context) {
-    return context.orm.club.findMany({
+    return context.orm.club_President.findMany({
         orderBy: [
             {
                 id: 'asc',
@@ -12,53 +12,49 @@ async function findAll(parent, args, context) {
         skip: args.skip,
         take: args.take,
         include: {
-            clubCategory: true,
-            clubPresident: true
+            club: true
         }
     });
 }
 exports.findAll = findAll;
 async function findOne(parent, args, context) {
-    return context.orm.club.findUnique({
+    return context.orm.club_President.findUnique({
         where: {
             id: parseInt(args.id, 10),
         },
         include: {
-            clubCategory: true,
-            clubPresident: true
+            club: true
         }
     });
 }
 exports.findOne = findOne;
-async function createClub(parent, { data, }, { orm }) {
-    const { name, image, clubCategoryId } = data;
-    const club = await orm.club.create({
+async function createClubPresident(parent, { data, }, { orm }) {
+    const { name, image } = data;
+    const club = await orm.club_President.create({
         data: {
             name,
             image,
-            clubCategoryId
         },
     });
     return club;
 }
-exports.createClub = createClub;
-async function updateClub(parent, { id, data, }, { orm }) {
-    const { name, image, clubCategoryId } = data;
-    const club = await orm.club.update({
+exports.createClubPresident = createClubPresident;
+async function updateClubPresident(parent, { id, data, }, { orm }) {
+    const { name, image } = data;
+    const club = await orm.club_President.update({
         where: {
             id: parseInt(id, 10)
         },
         data: {
             name,
             image,
-            clubCategoryId
         },
     });
     return club;
 }
-exports.updateClub = updateClub;
-async function deleteClub(parent, { id, }, { orm }) {
-    const club = await orm.club.update({
+exports.updateClubPresident = updateClubPresident;
+async function deleteClubPresident(parent, { id, }, { orm }) {
+    const club = await orm.club_President.update({
         where: {
             id: parseInt(id, 10)
         },
@@ -68,4 +64,4 @@ async function deleteClub(parent, { id, }, { orm }) {
     });
     return club;
 }
-exports.deleteClub = deleteClub;
+exports.deleteClubPresident = deleteClubPresident;

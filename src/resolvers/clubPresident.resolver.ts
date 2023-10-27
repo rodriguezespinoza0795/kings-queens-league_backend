@@ -1,14 +1,14 @@
-import type { PrismaClient, Prisma, Club_Category } from '@prisma/client'
+import type { PrismaClient, Prisma, Club_President } from '@prisma/client'
 
 export type ResolverParent = unknown
 export type ResolverContext = { orm: PrismaClient }
 
 export async function findAll(
   parent: ResolverParent,
-  args: { where?: Prisma.Club_CategoryWhereInput; skip?: number; take?: number },
+  args: { where?: Prisma.Club_PresidentWhereInput, skip?: number; take?: number },
   context: ResolverContext
-): Promise<Club_Category[]> {
-  return context.orm.club_Category.findMany({
+): Promise<Club_President[]> {
+  return context.orm.club_President.findMany({
     orderBy: [
       {
         id: 'asc',
@@ -17,6 +17,9 @@ export async function findAll(
     where: args.where,
     skip: args.skip,
     take: args.take,
+    include:{
+      club: true
+    }
   })
 }
 
@@ -24,47 +27,50 @@ export async function findOne(
   parent: ResolverParent,
   args: { id: string },
   context: ResolverContext
-): Promise<Club_Category | null> {
-  return context.orm.club_Category.findUnique({
+): Promise<Club_President| null> {
+  return context.orm.club_President.findUnique({
     where: {
       id: parseInt(args.id, 10),
     },
+    include: {
+      club: true
+    }
   })
 }
 
-export async function createClubCategory(
+export async function createClubPresident(
   parent: unknown,
   {
     data,
   }: {
-    data: Pick<Club_Category, 'name' | 'image' >
+    data: Pick<Club_President, 'name' | 'image' >
   },
   { orm }: ResolverContext
-): Promise<Club_Category> {
+): Promise<Club_President> {
   const { name, image } = data
-  const clubCategory = await orm.club_Category.create({
+  const club = await orm.club_President.create({
     data: {
       name,
       image,
     },
   })
-
-  return clubCategory
+  
+  return club
 }
 
-export async function updateClubCategory(
+export async function updateClubPresident(
   parent: unknown,
   {
     id,
     data,
   }: {
     id: string
-    data: Pick<Club_Category, 'name' | 'image' >
+    data: Pick<Club_President, 'name' | 'image' >
   },
   { orm }: ResolverContext
-): Promise<Club_Category> {
+): Promise<Club_President> {
   const { name, image } = data
-  const clubCategory = await orm.club_Category.update({
+  const club = await orm.club_President.update({
     where:{
       id: parseInt(id, 10)
     },
@@ -74,10 +80,10 @@ export async function updateClubCategory(
     },
   })
 
-return clubCategory
+return club
 }
 
-export async function deleteClubCategory(
+export async function deleteClubPresident(
   parent: unknown,
   {
     id,
@@ -85,8 +91,8 @@ export async function deleteClubCategory(
     id: string
   },
   { orm }: ResolverContext
-): Promise<Club_Category> {
-  const clubCategory = await orm.club_Category.update({
+): Promise<Club_President> {
+  const club = await orm.club_President.update({
     where:{
       id: parseInt(id, 10)
     },
@@ -95,5 +101,5 @@ export async function deleteClubCategory(
     },
   })
 
-return clubCategory
+return club
 }

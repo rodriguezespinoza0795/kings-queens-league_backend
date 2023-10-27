@@ -9,11 +9,17 @@ export async function findAll(
   context: ResolverContext
 ): Promise<Club[]> {
   return context.orm.club.findMany({
+    orderBy: [
+      {
+        id: 'asc',
+      },
+    ],
     where: args.where,
     skip: args.skip,
     take: args.take,
     include: {
-      clubCategory: true
+      clubCategory: true,
+      clubPresident: true
     }
   })
 }
@@ -28,7 +34,8 @@ export async function findOne(
       id: parseInt(args.id, 10),
     },
     include: {
-      clubCategory: true
+      clubCategory: true,
+      clubPresident: true
     }
   })
 }

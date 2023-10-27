@@ -3,6 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteClubCategory = exports.updateClubCategory = exports.createClubCategory = exports.findOne = exports.findAll = void 0;
 async function findAll(parent, args, context) {
     return context.orm.club_Category.findMany({
+        orderBy: [
+            {
+                id: 'asc',
+            },
+        ],
         where: args.where,
         skip: args.skip,
         take: args.take,
