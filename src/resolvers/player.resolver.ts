@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Player } from '@prisma/client'
+import type { PrismaClient, Prisma, Player, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -49,8 +49,9 @@ export async function createPlayer(
   }: {
     data: Omit<Player, 'id' | 'createdAt' | 'updatedAt'| 'isActive'>
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const player = await orm.player.create({
     data: data,
   })
@@ -67,8 +68,9 @@ export async function updatePlayer(
     id: string
     data: Omit<Player, 'id' | 'createdAt' | 'updatedAt'| 'isActive'>
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const player = await orm.player.update({
     where:{
       id: parseInt(id, 10)
@@ -86,8 +88,9 @@ export async function deletePlayer(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const player = await orm.player.update({
     where:{
       id: parseInt(id, 10)

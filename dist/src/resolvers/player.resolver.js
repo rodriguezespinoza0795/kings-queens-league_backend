@@ -32,14 +32,18 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createPlayer(parent, { data, }, { orm }) {
+async function createPlayer(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const player = await orm.player.create({
         data: data,
     });
     return player;
 }
 exports.createPlayer = createPlayer;
-async function updatePlayer(parent, { id, data, }, { orm }) {
+async function updatePlayer(parent, { id, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const player = await orm.player.update({
         where: {
             id: parseInt(id, 10)
@@ -49,7 +53,9 @@ async function updatePlayer(parent, { id, data, }, { orm }) {
     return player;
 }
 exports.updatePlayer = updatePlayer;
-async function deletePlayer(parent, { id, }, { orm }) {
+async function deletePlayer(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const player = await orm.player.update({
         where: {
             id: parseInt(id, 10)

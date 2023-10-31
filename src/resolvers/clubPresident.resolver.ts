@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Club_President } from '@prisma/client'
+import type { PrismaClient, Prisma, Club_President, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -45,8 +45,9 @@ export async function createClubPresident(
   }: {
     data: Pick<Club_President, 'name' | 'image' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club_President> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image } = data
   const club = await orm.club_President.create({
     data: {
@@ -67,8 +68,9 @@ export async function updateClubPresident(
     id: string
     data: Pick<Club_President, 'name' | 'image' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club_President> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image } = data
   const club = await orm.club_President.update({
     where:{
@@ -90,8 +92,9 @@ export async function deleteClubPresident(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club_President> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const club = await orm.club_President.update({
     where:{
       id: parseInt(id, 10)

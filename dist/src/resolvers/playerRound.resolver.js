@@ -34,7 +34,9 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createPlayerRound(parent, { data, }, { orm }) {
+async function createPlayerRound(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const playerRound = await orm.player_Round.createMany({
         data: data,
         skipDuplicates: true,
@@ -42,7 +44,9 @@ async function createPlayerRound(parent, { data, }, { orm }) {
     return playerRound;
 }
 exports.createPlayerRound = createPlayerRound;
-async function updatePlayerRound(parent, { id, data, }, { orm }) {
+async function updatePlayerRound(parent, { id, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const playerRound = await orm.player_Round.update({
         where: {
             id: parseInt(id, 10)
@@ -52,7 +56,9 @@ async function updatePlayerRound(parent, { id, data, }, { orm }) {
     return playerRound;
 }
 exports.updatePlayerRound = updatePlayerRound;
-async function deletePlayerRound(parent, { id, }, { orm }) {
+async function deletePlayerRound(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const playerRound = await orm.player_Round.update({
         where: {
             id: parseInt(id, 10)

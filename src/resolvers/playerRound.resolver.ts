@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Player_Round } from '@prisma/client'
+import type { PrismaClient, Prisma, Player_Round, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -51,8 +51,9 @@ export async function createPlayerRound(
   }: {
     data: Omit<Player_Round, 'id' | 'createdAt' | 'updatedAt' | 'isActive' >[]
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise< Prisma.BatchPayload> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const playerRound = await orm.player_Round.createMany({
     data: data,
     skipDuplicates: true,
@@ -70,8 +71,9 @@ export async function updatePlayerRound(
     id: string
     data: Pick<Player_Round, 'score' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player_Round> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const playerRound = await orm.player_Round.update({
     where: {
       id: parseInt(id, 10)
@@ -89,8 +91,9 @@ export async function deletePlayerRound(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player_Round> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const playerRound = await orm.player_Round.update({
     where:{
       id: parseInt(id, 10)

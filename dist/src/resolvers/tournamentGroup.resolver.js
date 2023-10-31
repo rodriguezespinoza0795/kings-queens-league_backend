@@ -30,7 +30,9 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createTournamentGroup(parent, { data, }, { orm }) {
+async function createTournamentGroup(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const tournamentGroup = await orm.tournament_Group.createMany({
         data: data,
         skipDuplicates: true,
@@ -38,7 +40,9 @@ async function createTournamentGroup(parent, { data, }, { orm }) {
     return tournamentGroup;
 }
 exports.createTournamentGroup = createTournamentGroup;
-async function updateTournamentGroup(parent, { where, data, }, { orm }) {
+async function updateTournamentGroup(parent, { where, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const tournamentGroup = await orm.tournament_Group.updateMany({
         where: where,
         data: data,
@@ -46,7 +50,9 @@ async function updateTournamentGroup(parent, { where, data, }, { orm }) {
     return tournamentGroup;
 }
 exports.updateTournamentGroup = updateTournamentGroup;
-async function deleteTournamentGroup(parent, { id, }, { orm }) {
+async function deleteTournamentGroup(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const tournamentGroup = await orm.tournament_Group.update({
         where: {
             id: parseInt(id, 10)

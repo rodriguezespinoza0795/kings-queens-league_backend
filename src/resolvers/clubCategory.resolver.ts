@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Club_Category } from '@prisma/client'
+import type { PrismaClient, Prisma, Club_Category, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -39,8 +39,9 @@ export async function createClubCategory(
   }: {
     data: Pick<Club_Category, 'name' | 'image' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club_Category> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image } = data
   const clubCategory = await orm.club_Category.create({
     data: {
@@ -61,8 +62,9 @@ export async function updateClubCategory(
     id: string
     data: Pick<Club_Category, 'name' | 'image' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club_Category> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image } = data
   const clubCategory = await orm.club_Category.update({
     where:{
@@ -84,8 +86,9 @@ export async function deleteClubCategory(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club_Category> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const clubCategory = await orm.club_Category.update({
     where:{
       id: parseInt(id, 10)

@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Club } from '@prisma/client'
+import type { PrismaClient, Prisma, Club, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -47,8 +47,9 @@ export async function createClub(
   }: {
     data: Pick<Club, 'name' | 'image' | 'clubCategoryId' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image, clubCategoryId } = data
   const club = await orm.club.create({
     data: {
@@ -70,8 +71,9 @@ export async function updateClub(
     id: string
     data: Pick<Club, 'name' | 'image' | 'clubCategoryId' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image, clubCategoryId } = data
   const club = await orm.club.update({
     where:{
@@ -94,8 +96,9 @@ export async function deleteClub(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Club> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const club = await orm.club.update({
     where:{
       id: parseInt(id, 10)

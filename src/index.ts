@@ -34,7 +34,7 @@ export default async function main() {
     cors<cors.CorsRequest>(),
     json(),
     expressMiddleware(server, {
-          context: async ({ req }) => ({ orm, token: req.headers.token }),
+          context: async ({ req }) => ({ orm, user: req.user }),
       }),
   );
 

@@ -27,7 +27,7 @@ const server = new server_1.ApolloServer({
 async function main() {
     await server.start();
     server_2.default.use('/graphql', (0, cors_1.default)(), json(), (0, express4_1.expressMiddleware)(server, {
-        context: async ({ req }) => ({ orm, token: req.headers.token }),
+        context: async ({ req }) => ({ orm, user: req.user }),
     }));
     await new Promise((resolve) => httpServer.listen({ port }, resolve));
     console.log(`🚀  Server ready at http://localhost:4000/graphql`);

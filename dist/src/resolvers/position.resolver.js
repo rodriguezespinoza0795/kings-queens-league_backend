@@ -22,7 +22,9 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createPosition(parent, { data, }, { orm }) {
+async function createPosition(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const { name, description } = data;
     const position = await orm.position.create({
         data: {
@@ -33,7 +35,9 @@ async function createPosition(parent, { data, }, { orm }) {
     return position;
 }
 exports.createPosition = createPosition;
-async function updatePosition(parent, { id, data, }, { orm }) {
+async function updatePosition(parent, { id, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const { name, description } = data;
     const position = await orm.position.update({
         where: {
@@ -47,7 +51,9 @@ async function updatePosition(parent, { id, data, }, { orm }) {
     return position;
 }
 exports.updatePosition = updatePosition;
-async function deletePosition(parent, { id, }, { orm }) {
+async function deletePosition(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const position = await orm.position.update({
         where: {
             id: parseInt(id, 10)

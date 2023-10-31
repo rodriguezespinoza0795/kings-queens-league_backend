@@ -22,7 +22,9 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createPlayerType(parent, { data, }, { orm }) {
+async function createPlayerType(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const { name } = data;
     const playerType = await orm.player_Type.create({
         data: {
@@ -32,7 +34,9 @@ async function createPlayerType(parent, { data, }, { orm }) {
     return playerType;
 }
 exports.createPlayerType = createPlayerType;
-async function updatePlayerType(parent, { id, data, }, { orm }) {
+async function updatePlayerType(parent, { id, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const { name } = data;
     const clubCategory = await orm.player_Type.update({
         where: {
@@ -45,7 +49,9 @@ async function updatePlayerType(parent, { id, data, }, { orm }) {
     return clubCategory;
 }
 exports.updatePlayerType = updatePlayerType;
-async function deletePlayerType(parent, { id, }, { orm }) {
+async function deletePlayerType(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const playerType = await orm.player_Type.update({
         where: {
             id: parseInt(id, 10)

@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Tournament_Group } from '@prisma/client'
+import type { PrismaClient, Prisma, Tournament_Group, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -47,8 +47,9 @@ export async function createTournamentGroup(
   }: {
     data: Omit<Tournament_Group, 'id' | 'createdAt' | 'updatedAt' | 'isActive' >[]
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise< Prisma.BatchPayload> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const tournamentGroup = await orm.tournament_Group.createMany({
     data: data,
     skipDuplicates: true,
@@ -66,8 +67,9 @@ export async function updateTournamentGroup(
     where: Prisma.Tournament_GroupWhereInput
     data: Pick<Tournament_Group, 'name' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Prisma.BatchPayload> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const tournamentGroup = await orm.tournament_Group.updateMany({
     where: where,
     data: data,
@@ -83,8 +85,9 @@ export async function deleteTournamentGroup(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Tournament_Group> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const tournamentGroup = await orm.tournament_Group.update({
     where:{
       id: parseInt(id, 10)

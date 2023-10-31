@@ -22,7 +22,9 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createClubCategory(parent, { data, }, { orm }) {
+async function createClubCategory(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const { name, image } = data;
     const clubCategory = await orm.club_Category.create({
         data: {
@@ -33,7 +35,9 @@ async function createClubCategory(parent, { data, }, { orm }) {
     return clubCategory;
 }
 exports.createClubCategory = createClubCategory;
-async function updateClubCategory(parent, { id, data, }, { orm }) {
+async function updateClubCategory(parent, { id, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const { name, image } = data;
     const clubCategory = await orm.club_Category.update({
         where: {
@@ -47,7 +51,9 @@ async function updateClubCategory(parent, { id, data, }, { orm }) {
     return clubCategory;
 }
 exports.updateClubCategory = updateClubCategory;
-async function deleteClubCategory(parent, { id, }, { orm }) {
+async function deleteClubCategory(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const clubCategory = await orm.club_Category.update({
         where: {
             id: parseInt(id, 10)

@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Tournament } from '@prisma/client'
+import type { PrismaClient, Prisma, Tournament, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -45,8 +45,9 @@ export async function createTournament(
   }: {
     data: Omit<Tournament, 'id' | 'createdAt' | 'updatedAt' | 'isActive' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Tournament> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const club = await orm.tournament.create({
     data: data
   })
@@ -63,8 +64,9 @@ export async function updateTournament(
     id: string
     data: Omit<Tournament,'id' | 'createdAt' | 'updatedAt' | 'isActive' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Tournament> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const tournament = await orm.tournament.update({
     where:{
       id: parseInt(id, 10)
@@ -82,8 +84,10 @@ export async function deleteTournament(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Tournament> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
+
   const tournament = await orm.tournament.update({
     where:{
       id: parseInt(id, 10)

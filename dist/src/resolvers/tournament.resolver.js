@@ -28,14 +28,18 @@ async function findOne(parent, args, context) {
     });
 }
 exports.findOne = findOne;
-async function createTournament(parent, { data, }, { orm }) {
+async function createTournament(parent, { data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const club = await orm.tournament.create({
         data: data
     });
     return club;
 }
 exports.createTournament = createTournament;
-async function updateTournament(parent, { id, data, }, { orm }) {
+async function updateTournament(parent, { id, data, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const tournament = await orm.tournament.update({
         where: {
             id: parseInt(id, 10)
@@ -45,7 +49,9 @@ async function updateTournament(parent, { id, data, }, { orm }) {
     return tournament;
 }
 exports.updateTournament = updateTournament;
-async function deleteTournament(parent, { id, }, { orm }) {
+async function deleteTournament(parent, { id, }, { orm, user }) {
+    if (user == undefined)
+        throw new Error('UNAUTHENTICATED');
     const tournament = await orm.tournament.update({
         where: {
             id: parseInt(id, 10)

@@ -1,7 +1,7 @@
-import type { PrismaClient, Prisma, Player_Type } from '@prisma/client'
+import type { PrismaClient, Prisma, Player_Type, User } from '@prisma/client'
 
 export type ResolverParent = unknown
-export type ResolverContext = { orm: PrismaClient }
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export async function findAll(
   parent: ResolverParent,
@@ -39,8 +39,9 @@ export async function createPlayerType(
   }: {
     data: Pick<Player_Type, 'name' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player_Type> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name } = data
   const playerType = await orm.player_Type.create({
     data: {
@@ -60,8 +61,9 @@ export async function updatePlayerType(
     id: string
     data: Pick<Player_Type, 'name' >
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player_Type> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name } = data
   const clubCategory = await orm.player_Type.update({
     where:{
@@ -82,8 +84,9 @@ export async function deletePlayerType(
   }: {
     id: string
   },
-  { orm }: ResolverContext
+  { orm, user }: ResolverContext
 ): Promise<Player_Type> {
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const playerType = await orm.player_Type.update({
     where:{
       id: parseInt(id, 10)
