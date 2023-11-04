@@ -9,6 +9,8 @@ import * as tournamentRound from './tournamentRound.resolver'
 import * as playerRound from './playerRound.resolver'
 import * as user from './user.resolver'
 import * as clubPresident from './clubPresident.resolver'
+import * as roundMatch from './roundMatch.resolver'
+
 
 
 
@@ -34,6 +36,8 @@ export default {
     playerRounds: playerRound.findAll,
     clubPresident: clubPresident.findOne,
     clubPresidents: clubPresident.findAll,
+    roundMatch: roundMatch.findOne,
+    roundMatches: roundMatch.findAll,
   },
   Mutation: {
     createClubCategory: clubCategory.createClubCategory,
@@ -66,6 +70,7 @@ export default {
     createClubPresident: clubPresident.createClubPresident,
     deleteClubPresident: clubPresident.deleteClubPresident,
     updateClubPresident: clubPresident.updateClubPresident,
+    createRoundMatches: roundMatch.createRoundMatch,
     createUser: user.createUser,
     signIn: user.signIn,
     validateEmail: user.validateEmail

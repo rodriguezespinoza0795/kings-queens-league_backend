@@ -34,6 +34,8 @@ type Query {
   playerRound(id: ID!): PlayerRound
   clubPresidents(skip: Int, take: Int, where: NameWhereInput): [ClubPresident]!
   clubPresident(id: ID!): ClubPresident
+  roundMatches(skip: Int, take: Int, where: RoundMatchWhereInput): [RoundMatch]!
+  roundMatch(id: ID!): RoundMatch
 }
 
 type Mutation {
@@ -70,6 +72,7 @@ type Mutation {
   createClubPresident(data: ClubPresidentInput!): ClubPresident!
   deleteClubPresident(id: ID!): ClubPresident!
   updateClubPresident(id: ID!, data: ClubPresidentInput!): ClubPresident!
+  createRoundMatches(data: [RoundMatchInput]!): Count!
   createUser(data: UserInput!): User!
   signIn(data: UserSignInInput!): AuthenticationResponse!
   validateEmail(data: UserValidateEmailInput!): User!
@@ -215,6 +218,21 @@ type PlayerRound implements BaseModel {
   isActive: Int!
 }
 
+type RoundMatch implements BaseModel {
+  id: ID!
+  roundId: Int!
+  round: TournamentRound!
+  clubHomeScore: Int!
+  clubHomeScoreDraw: Int
+  clubHomePoints: Int!
+  clubAwayScore: Int!
+  clubAwayScoreDraw: Int
+  clubAwayPoint: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
 type Count {
   count: Int
 }
@@ -329,6 +347,16 @@ input PlayerRoundInput {
   score: Int
 }
 
+input RoundMatchInput {
+  roundId: Int!
+  clubHomeScore: Int!
+  clubHomeScoreDraw: Int
+  clubHomePoints: Int!
+  clubAwayScore: Int!
+  clubAwayScoreDraw: Int
+  clubAwayPoint: Int!
+}
+
 input TournamentRoundUpdateInput {
   clubIdHome: Int!
   clubIdAway: Int!
@@ -379,6 +407,12 @@ input PlayerRoundWhereInput {
   roundId: NumberFilterInput
   round: TournamentRoundWhereInput
   playerId: NumberFilterInput
+  isActive: boolFilterInput
+}
+
+input RoundMatchWhereInput {
+  roundId: NumberFilterInput
+  round: TournamentRoundWhereInput
   isActive: boolFilterInput
 }
 
