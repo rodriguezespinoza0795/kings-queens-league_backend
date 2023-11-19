@@ -2,10 +2,12 @@ scalar DateTime
 
 # Queries and Mutations
 type Query {
-  clubCategories(skip: Int, take: Int, where: NameWhereInput): [ClubCategory]!
-  clubCategory(id: ID!): ClubCategory
   clubs(skip: Int, take: Int, where: ClubWhereInput): [Club]!
   club(id: ID!): Club
+  clubCategories(skip: Int, take: Int, where: NameWhereInput): [ClubCategory]!
+  clubCategory(id: ID!): ClubCategory
+  clubCountries(skip: Int, take: Int, where: NameWhereInput): [ClubCountry]!
+  clubCountry(id: ID!): ClubCountry
   positions(skip: Int, take: Int, where: NameWhereInput): [Position]!
   position(id: ID!): Position
   playerTypes(skip: Int, take: Int, where: NameWhereInput): [PlayerType]!
@@ -39,12 +41,15 @@ type Query {
 }
 
 type Mutation {
-  createClubCategory(data: ClubCategoryInput!): ClubCategory!
-  deleteClubCategory(id: ID!): ClubCategory!
-  updateClubCategory(id: ID!, data: ClubCategoryInput!): ClubCategory!
   createClub(data: ClubInput!): Club!
   deleteClub(id: ID!): Club!
   updateClub(id: ID!, data: ClubInput!): Club!
+  createClubCategory(data: ClubCategoryInput!): ClubCategory!
+  deleteClubCategory(id: ID!): ClubCategory!
+  updateClubCategory(id: ID!, data: ClubCategoryInput!): ClubCategory!
+  createClubCountry(data: ClubCountryInput!): ClubCountry!
+  deleteClubCountry(id: ID!): ClubCountry!
+  updateClubCountry(id: ID!, data: ClubCountryInput!): ClubCountry!
   createPosition(data: PositionInput!): Club!
   deletePosition(id: ID!): Position!
   updatePosition(id: ID!, data: PositionInput!): Position!
@@ -102,6 +107,15 @@ type User implements BaseModel {
 }
 
 type ClubCategory implements BaseModel {
+  id: ID!
+  name: String!
+  image: String!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  isActive: Int!
+}
+
+type ClubCountry implements BaseModel {
   id: ID!
   name: String!
   image: String!
@@ -291,6 +305,11 @@ input UserValidateEmailInput {
 }
 
 input ClubCategoryInput {
+  name: String!
+  image: String!
+}
+
+input ClubCountryInput {
   name: String!
   image: String!
 }

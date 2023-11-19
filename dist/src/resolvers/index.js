@@ -23,50 +23,56 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const clubCategory = __importStar(require("./clubCategory.resolver"));
 const club = __importStar(require("./club.resolver"));
-const position = __importStar(require("./position.resolver"));
-const playerType = __importStar(require("./playerType.resolver"));
+const clubCategory = __importStar(require("./clubCategory.resolver"));
+const clubCountry = __importStar(require("./clubCountry.resolver"));
+const clubPresident = __importStar(require("./clubPresident.resolver"));
 const player = __importStar(require("./player.resolver"));
+const playerRound = __importStar(require("./playerRound.resolver"));
+const playerType = __importStar(require("./playerType.resolver"));
+const position = __importStar(require("./position.resolver"));
+const roundMatch = __importStar(require("./roundMatch.resolver"));
 const tournament = __importStar(require("./tournament.resolver"));
 const tournamentGroup = __importStar(require("./tournamentGroup.resolver"));
 const tournamentRound = __importStar(require("./tournamentRound.resolver"));
-const playerRound = __importStar(require("./playerRound.resolver"));
 const user = __importStar(require("./user.resolver"));
-const clubPresident = __importStar(require("./clubPresident.resolver"));
-const roundMatch = __importStar(require("./roundMatch.resolver"));
 exports.default = {
     Query: {
-        clubCategory: clubCategory.findOne,
-        clubCategories: clubCategory.findAll,
         club: club.findOne,
         clubs: club.findAll,
-        position: position.findOne,
-        positions: position.findAll,
-        playerType: playerType.findOne,
-        playerTypes: playerType.findAll,
+        clubCategory: clubCategory.findOne,
+        clubCategories: clubCategory.findAll,
+        clubCountry: clubCountry.findOne,
+        clubCountries: clubCountry.findAll,
+        clubPresident: clubPresident.findOne,
+        clubPresidents: clubPresident.findAll,
         player: player.findOne,
         players: player.findAll,
+        playerRound: playerRound.findOne,
+        playerRounds: playerRound.findAll,
+        playerType: playerType.findOne,
+        playerTypes: playerType.findAll,
+        position: position.findOne,
+        positions: position.findAll,
         tournament: tournament.findOne,
         tournaments: tournament.findAll,
         tournamentGroup: tournamentGroup.findOne,
         tournamentGroups: tournamentGroup.findAll,
         tournamentRound: tournamentRound.findOne,
         tournamentRounds: tournamentRound.findAll,
-        playerRound: playerRound.findOne,
-        playerRounds: playerRound.findAll,
-        clubPresident: clubPresident.findOne,
-        clubPresidents: clubPresident.findAll,
         roundMatch: roundMatch.findOne,
         roundMatches: roundMatch.findAll,
     },
     Mutation: {
-        createClubCategory: clubCategory.createClubCategory,
-        deleteClubCategory: clubCategory.deleteClubCategory,
-        updateClubCategory: clubCategory.updateClubCategory,
         createClub: club.createClub,
         deleteClub: club.deleteClub,
         updateClub: club.updateClub,
+        createClubCategory: clubCategory.createClubCategory,
+        deleteClubCategory: clubCategory.deleteClubCategory,
+        updateClubCategory: clubCategory.updateClubCategory,
+        createClubCountry: clubCountry.createClubCountry,
+        deleteClubCountry: clubCountry.deleteClubCountry,
+        updateClubCountry: clubCountry.updateClubCountry,
         createPosition: position.createPosition,
         deletePosition: position.deletePosition,
         updatePosition: position.updatePosition,
