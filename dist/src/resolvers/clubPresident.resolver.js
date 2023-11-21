@@ -29,23 +29,32 @@ async function findOne(parent, args, context) {
 }
 exports.findOne = findOne;
 async function createClubPresident(parent, { data, }, { orm, user }) {
+    const { name, image } = data;
     if (user == undefined)
         throw new Error('UNAUTHENTICATED');
-    const { name, image } = data;
-    const club = await orm.club_President.create({
+    const club_President = await orm.club_President.findUnique({ where: { name: name } });
+    if (club_President)
+        throw new Error('ALREADY_EXISTS');
+    const clubPresident = await orm.club_President.create({
         data: {
             name,
             image,
         },
     });
-    return club;
+    return clubPresident;
 }
 exports.createClubPresident = createClubPresident;
 async function updateClubPresident(parent, { id, data, }, { orm, user }) {
+    const { name, image } = data;
     if (user == undefined)
         throw new Error('UNAUTHENTICATED');
-    const { name, image } = data;
-    const club = await orm.club_President.update({
+    const clubPresidentID = await orm.club_President.findUnique({ where: { id: parseInt(id, 10) } });
+    if (!clubPresidentID)
+        throw new Error('NOT_EXISTS');
+    const clubPresidentName = await orm.club_President.findUnique({ where: { name: name } });
+    if (clubPresidentName)
+        throw new Error('ALREADY_EXISTS');
+    const clubPresident = await orm.club_President.update({
         where: {
             id: parseInt(id, 10)
         },
@@ -54,13 +63,16 @@ async function updateClubPresident(parent, { id, data, }, { orm, user }) {
             image,
         },
     });
-    return club;
+    return clubPresident;
 }
 exports.updateClubPresident = updateClubPresident;
 async function deleteClubPresident(parent, { id, }, { orm, user }) {
     if (user == undefined)
         throw new Error('UNAUTHENTICATED');
-    const club = await orm.club_President.update({
+    const clubPresidentID = await orm.club_President.findUnique({ where: { id: parseInt(id, 10) } });
+    if (!clubPresidentID)
+        throw new Error('NOT_EXISTS');
+    const clubPresident = await orm.club_President.update({
         where: {
             id: parseInt(id, 10)
         },
@@ -68,6 +80,6 @@ async function deleteClubPresident(parent, { id, }, { orm, user }) {
             isActive: false
         },
     });
-    return club;
+    return clubPresident;
 }
 exports.deleteClubPresident = deleteClubPresident;

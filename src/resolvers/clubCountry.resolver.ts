@@ -45,7 +45,7 @@ export async function createClubCountry(
   if (user == undefined) throw new Error('UNAUTHENTICATED');
 
   const club_Country = await orm.club_Country.findUnique({ where: { name: name } });
-  if (club_Country)throw new Error('COUNTRY_CLUB_ALREADY_EXISTS');
+  if (club_Country)throw new Error('ALREADY_EXISTS');
 
   const clubCountry = await orm.club_Country.create({
     data: {
@@ -72,10 +72,10 @@ export async function updateClubCountry(
   if (user == undefined) throw new Error('UNAUTHENTICATED');
 
   const clubCountryID = await orm.club_Country.findUnique({ where: { id: parseInt(id, 10) } });
-  if (!clubCountryID)throw new Error('COUNTRY_CLUB_NOT_EXISTS');
+  if (!clubCountryID)throw new Error('NOT_EXISTS');
 
   const clubCountryName = await orm.club_Country.findUnique({ where: { name: name } });
-  if (clubCountryName)throw new Error('COUNTRY_CLUB_ALREADY_EXISTS');
+  if (clubCountryName)throw new Error('ALREADY_EXISTS');
 
   const clubCountry = await orm.club_Country.update({
     where:{
@@ -102,7 +102,7 @@ export async function deleteClubCountry(
   if (user == undefined) throw new Error('UNAUTHENTICATED');
 
   const clubCountryID = await orm.club_Country.findUnique({ where: { id: parseInt(id, 10) } });
-  if (!clubCountryID)throw new Error('COUNTRY_CLUB_NOT_EXISTS');
+  if (!clubCountryID)throw new Error('NOT_EXISTS');
   
   const clubCountry = await orm.club_Country.update({
     where:{

@@ -1,0 +1,27 @@
+INSERT INTO "public"."Club_President"("name","image","createdAt","updatedAt","isActive") VALUES
+(E'James Rodríguez & Pelicanger',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452193/d0wbrjm6tn2knqychvpr.png',E'2023-11-20 03:49:54.487',E'2023-11-20 03:49:54.487',TRUE),
+(E'Mercedes Roa',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452273/a0p6jgjni3wodhdd6olc.png',E'2023-11-20 03:51:13.968',E'2023-11-20 03:51:13.968',TRUE),
+(E'Los Futbolitos & Alofoke',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452322/mwadwlmsajcji5bze7k8.png',E'2023-11-20 03:52:03.27',E'2023-11-20 03:52:03.27',TRUE),
+(E'Castro1021',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452702/ed87s1uhbn3nnqkalu8g.png',E'2023-11-20 03:58:23.414',E'2023-11-20 03:58:23.414',TRUE),
+(E'Thedonato & Yolo',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452746/l7bhy5ft87lyr0gqb140.png',E'2023-11-20 03:59:06.901',E'2023-11-20 03:59:06.901',TRUE),
+(E'Jero Freixas',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452799/hk9p910va6kn3kg9pilc.png',E'2023-11-20 04:00:00.017',E'2023-11-20 04:00:00.017',TRUE),
+(E'Chicharito',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452837/n7qlnkf4aeoipkvi0xej.png',E'2023-11-20 04:00:38.173',E'2023-11-20 04:00:38.173',TRUE),
+(E'Hnos. Montiel',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452868/s0bpqanapachnztkx7ud.png',E'2023-11-20 04:01:09.412',E'2023-11-20 04:01:09.412',TRUE),
+(E'Zeein',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452912/ynb86wa8opgjfu8fx37s.png',E'2023-11-20 04:01:52.991',E'2023-11-20 04:01:52.991',TRUE),
+(E'Alana & Barcagamer',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452950/jjkjjq1hbzw2n2vzu44r.png',E'2023-11-20 04:02:31.069',E'2023-11-20 04:02:31.069',TRUE),
+(E'Germán Garmendia',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700452983/v6x8oyz4wczmarthsfsh.png',E'2023-11-20 04:03:03.892',E'2023-11-20 04:03:03.892',TRUE),
+(E'Westcol & Arcángel',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700453039/jgqabaabhvkfqmxgxz2n.png',E'2023-11-20 04:04:00.564',E'2023-11-20 04:04:00.564',TRUE);
+
+INSERT INTO "public"."Club"("name","clubCountryId","clubCategoryId","clubPresidentId","color","image","createdAt","updatedAt","isActive") VALUES
+(E'Atlético Parceros FC',2,1,13,E'ca3f41',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700527534/vdk3jhuul1v5lxgxznk1.svg',E'2023-11-21 00:45:38.211',E'2023-11-21 00:45:38.211',TRUE),
+(E'Club de cuervos',2,1,14,E'515151',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700527650/izdbrntqavix9jqsczfy.svg',E'2023-11-21 00:47:31.727',E'2023-11-21 00:47:31.727',TRUE),
+(E'Galácticos del caribe',2,1,15,E'760917',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700527864/exmqndscr1qx7ebds41j.svg',E'2023-11-21 00:51:05.642',E'2023-11-21 00:51:05.642',TRUE),
+(E'Los Aliens',2,1,16,E'6927c7',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700527953/ffqlqosuxzbkrmocnwjl.svg',E'2023-11-21 00:52:35.028',E'2023-11-21 00:52:35.028',TRUE),
+(E'Los Chamos FC',2,1,17,E'135417',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528076/gfzps0bmigcianenjsrx.svg',E'2023-11-21 00:54:38.287',E'2023-11-21 00:54:38.287',TRUE),
+(E'Muchachos FC',2,1,18,E'257584',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528161/iprri3mef4j8ecb6y8y6.svg',E'2023-11-21 00:56:02.613',E'2023-11-21 00:56:02.613',TRUE),
+(E'Olimpo United',2,1,19,E'652600',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528230/rbbiqbsxpou0xy2u1yy1.svg',E'2023-11-21 00:57:11.899',E'2023-11-21 00:57:11.899',TRUE),
+(E'Peluche Caligari',2,1,20,E'813d1f',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528312/p2nctnqphgtknfgw0c7r.svg',E'2023-11-21 00:58:34.08',E'2023-11-21 00:58:34.08',TRUE),
+(E'Persas FC',2,1,21,E'002264',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528393/mg4epzkszya2kmcihahs.svg',E'2023-11-21 00:59:55.354',E'2023-11-21 00:59:55.354',TRUE),
+(E'Raniza FC',2,1,22,E'01633f',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528456/tkrtjhwcxv21xbz1jizb.png',E'2023-11-21 01:00:57.023',E'2023-11-21 01:00:57.023',TRUE),
+(E'Real Titan',2,1,23,E'64063f',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528528/zcytge7flseayqqorvwo.svg',E'2023-11-21 01:02:16.955',E'2023-11-21 01:02:16.955',TRUE),
+(E'West Santos FC',2,1,24,E'947a59',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700528767/o33f1yekwiqyjhblatwq.svg',E'2023-11-21 01:06:08.658',E'2023-11-21 01:06:08.658',TRUE);

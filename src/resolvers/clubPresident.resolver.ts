@@ -47,16 +47,20 @@ export async function createClubPresident(
   },
   { orm, user }: ResolverContext
 ): Promise<Club_President> {
-  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image } = data
-  const club = await orm.club_President.create({
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
+
+  const club_President = await orm.club_President.findUnique({ where: { name: name } });
+  if (club_President)throw new Error('ALREADY_EXISTS');
+
+  const clubPresident = await orm.club_President.create({
     data: {
       name,
       image,
     },
   })
-  
-  return club
+
+  return clubPresident
 }
 
 export async function updateClubPresident(
@@ -70,9 +74,16 @@ export async function updateClubPresident(
   },
   { orm, user }: ResolverContext
 ): Promise<Club_President> {
-  if (user == undefined) throw new Error('UNAUTHENTICATED');
   const { name, image } = data
-  const club = await orm.club_President.update({
+  if (user == undefined) throw new Error('UNAUTHENTICATED');
+
+  const clubPresidentID = await orm.club_President.findUnique({ where: { id: parseInt(id, 10) } });
+  if (!clubPresidentID)throw new Error('NOT_EXISTS');
+
+  const clubPresidentName = await orm.club_President.findUnique({ where: { name: name } });
+  if (clubPresidentName)throw new Error('ALREADY_EXISTS');
+
+  const clubPresident = await orm.club_President.update({
     where:{
       id: parseInt(id, 10)
     },
@@ -82,7 +93,7 @@ export async function updateClubPresident(
     },
   })
 
-return club
+return clubPresident
 }
 
 export async function deleteClubPresident(
@@ -95,7 +106,11 @@ export async function deleteClubPresident(
   { orm, user }: ResolverContext
 ): Promise<Club_President> {
   if (user == undefined) throw new Error('UNAUTHENTICATED');
-  const club = await orm.club_President.update({
+
+  const clubPresidentID = await orm.club_President.findUnique({ where: { id: parseInt(id, 10) } });
+  if (!clubPresidentID)throw new Error('NOT_EXISTS');
+  
+  const clubPresident = await orm.club_President.update({
     where:{
       id: parseInt(id, 10)
     },
@@ -104,5 +119,5 @@ export async function deleteClubPresident(
     },
   })
 
-return club
+return clubPresident
 }

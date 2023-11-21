@@ -318,6 +318,9 @@ input ClubInput {
   name: String!
   image: String!
   clubCategoryId: Int!
+  clubCountryId: Int!
+  clubPresidentId: Int!
+  color: String!
 }
 
 input ClubPresidentInput {

@@ -33,12 +33,15 @@ exports.findOne = findOne;
 async function createClub(parent, { data, }, { orm, user }) {
     if (user == undefined)
         throw new Error('UNAUTHENTICATED');
-    const { name, image, clubCategoryId } = data;
+    const { name, image, clubCategoryId, clubCountryId, clubPresidentId, color } = data;
     const club = await orm.club.create({
         data: {
             name,
             image,
-            clubCategoryId
+            clubCategoryId,
+            clubCountryId,
+            clubPresidentId,
+            color
         },
     });
     return club;

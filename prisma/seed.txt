@@ -12,9 +12,9 @@ VALUES
 (E'Jugador 12',E'2023-09-18 16:40:42.211',E'2023-09-18 16:40:45.606',TRUE),
 (E'Jugador 13',E'2023-10-02 04:18:08.277',E'2023-10-02 04:18:08.277',TRUE);
 
-// INSERT INTO "public"."Tournament"("name","edition","clubCategoryId","numGroup","createdAt","updatedAt","isActive") VALUES
-// (E'Kings Cup',1,1,2,E'2023-09-20 03:57:40.533',E'2023-09-20 04:00:23.747',TRUE),
-// (E'Queens Cup',1,2,2,E'2023-10-08 01:41:32.235',E'2023-10-08 01:41:32.235',TRUE);
+INSERT INTO "public"."Tournament"("name","edition","clubCategoryId","numGroup","createdAt","updatedAt","isActive") VALUES
+(E'Kings Cup',1,1,2,E'2023-09-20 03:57:40.533',E'2023-09-20 04:00:23.747',FALSE),
+(E'Queens Cup',1,2,2,E'2023-10-08 01:41:32.235',E'2023-10-08 01:41:32.235',FALSE);
 
 INSERT INTO "public"."Club_Category"("id","name","image","createdAt","updatedAt","isActive") VALUES
 (E'Kings',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999156/szangdk9bz456spkrryj.svg',E'2023-09-18 01:05:58.584',E'2023-09-18 01:05:58.584',TRUE),
@@ -35,31 +35,31 @@ INSERT INTO "public"."Club_President"("name","image","createdAt","updatedAt","is
 (E'Perxitaa & Violeta',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698434011/c1vcyjmfftnrlmk1mqbn.png',E'2023-10-27 19:13:33.092',E'2023-10-27 19:13:33.092',TRUE),
 (E'Hnos. Buyer',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698434098/rvkyadluufexjn7d73e5.png',E'2023-10-27 19:14:58.621',E'2023-10-27 19:14:58.621',TRUE);
 
-INSERT INTO "public"."Club"("id","name","clubPresidentId","clubCategoryId","image","color","createdAt","updatedAt","isActive") VALUES
-(E'Ultimate Móstoles',1,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999222/u6iwnfdwhyguuyapk8cs.svg',E'c08e4e',E'2023-09-18 01:07:04.116',E'2023-09-18 01:07:04.116',TRUE),
-(E'Aniquiladores FC',2,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999283/tjdp1sq88m35wqzjzvpn.svg',E'e62d50',E'2023-09-18 01:08:05.351',E'2023-09-18 01:08:05.351',TRUE),
-(E'Jijantes FC',4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999305/wa7uwlsvmmo0vohmwbcx.svg',E'aa2841',E'2023-09-18 01:08:26.742',E'2023-09-18 01:08:26.742',TRUE),
-(E'El Barrio',5,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999324/zyv9xzzevmqznts2h90s.svg',E'0756a4',E'2023-09-18 01:08:46.016',E'2023-09-18 01:08:46.016',TRUE),
-(E'Saiyans FC',3,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999359/strpynuc0f6odlispbcu.svg',E'89b4d3',E'2023-09-18 01:09:20.652',E'2023-09-18 01:09:20.652',TRUE),
-(E'Los Troncos FC',11,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999412/san1kwedqokpt2qsm0ww.png',E'1a7c5d',E'2023-09-18 01:10:13.597',E'2023-09-18 01:10:13.597',TRUE),
-(E'Kunisports',9,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999483/d2hoaakqwrvmh8mujrb0.svg',E'20222a',E'2023-09-18 01:11:25.433',E'2023-09-18 01:11:25.433',TRUE),
-(E'Porcinos FC',8,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999502/byfnmwvxtjrzvoczj21h.svg',E'fa188e',E'2023-09-18 01:11:44.192',E'2023-09-18 01:11:44.192',TRUE),
-(E'Rayo de Barcelona',10,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999543/dymlgtqa9h6chtg9vyf2.svg',E'f8af3e',E'2023-09-18 01:12:25.131',E'2023-09-18 01:12:25.131',TRUE),
-(E'xBuyer Team',12,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999560/u8didv99gmfayraq6jeq.svg',E'fcc415',E'2023-09-18 01:12:42.458',E'2023-09-18 01:12:42.458',TRUE),
-(E'PIO FC',7,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999589/xonxmbwi9orzndpylx2k.svg',E'c1c1c1',E'2023-09-18 01:13:11.84',E'2023-09-18 01:13:11.84',TRUE),
-(E'1K FC',6,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999624/we5nih5lwos5iwoosx5z.svg',E'232675',E'2023-09-18 01:13:47.059',E'2023-09-18 01:13:47.059',TRUE),
-(E'Saiyans FC',3,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713555/ho0cegwqui1g5rardbna.svg',E'89b4d3',E'2023-10-07 21:19:16.74',E'2023-10-07 21:19:16.74',TRUE),
-(E'1K FC',6,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713585/jpyg4nhd7osdrrovbjnj.svg',E'232675',E'2023-10-07 21:19:47.196',E'2023-10-07 21:19:47.196',TRUE),
-(E'Aniquiladoras FC',2,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713628/qzs5ivdym6cjlllagpss.svg',E'e62d50',E'2023-10-07 21:20:29.837',E'2023-10-07 21:20:29.837',TRUE),
-(E'Kunitas',9,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713703/vfcpzpzipyizgl2oitey.svg',E'20222a',E'2023-10-07 21:21:44.598',E'2023-10-07 21:21:44.598',TRUE),
-(E'Rayo de Barcelona',10,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713725/qlthgb7oegiyt2qg62ip.svg',E'f8af3e',E'2023-10-07 21:22:06.662',E'2023-10-07 21:22:06.662',TRUE),
-(E'PIO FC',7,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713746/kb5haikayyyglqjznnpp.svg',E'c1c1c1',E'2023-10-07 21:22:27.658',E'2023-10-07 21:22:27.658',TRUE),
-(E'xBuyer Team',12,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713762/gwapjqs8cstxfgeo3dyg.svg',E'fcc415',E'2023-10-07 21:22:44.45',E'2023-10-07 21:22:44.45',TRUE),
-(E'El Barrio',5,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713780/s1g7pbucfdpkfcxenv93.svg',E'0756a4',E'2023-10-07 21:23:01.854',E'2023-10-07 21:23:01.854',TRUE),
-(E'Jijantas FC',4,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713809/sjqfll28ykym5lxtaxs0.svg',E'aa2841',E'2023-10-07 21:23:31.449',E'2023-10-07 21:23:31.449',TRUE),
-(E'Porcinas FC',8,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713842/qeqzqsuqnlzkj9zhicq1.svg',E'fa188e',E'2023-10-07 21:24:04.527',E'2023-10-07 21:24:04.527',TRUE),
-(E'Ultimate Móstoles',1,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713873/hwjxy5fmwzszrxj2iqoi.svg',E'c08e4e',E'2023-10-07 21:24:34.426',E'2023-10-07 21:24:34.426',TRUE),
-(E'Las Troncas FC',11,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713912/xlbq72vhsp5u49yt4wnz.svg',E'1a7c5d',E'2023-10-07 21:25:13.957',E'2023-10-07 21:25:13.957',TRUE);
+INSERT INTO "public"."Club"("id","name","clubCountryId","clubCategoryId","clubPresidentId","color","image","createdAt","updatedAt","isActive") VALUES
+(E'Ultimate Móstoles',1,1,1,E'c08e4e',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999222/u6iwnfdwhyguuyapk8cs.svg',E'2023-09-18 01:07:04.116',E'2023-09-18 01:07:04.116',TRUE),
+(E'Aniquiladores FC',1,1,2,E'e62d50',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999283/tjdp1sq88m35wqzjzvpn.svg',E'2023-09-18 01:08:05.351',E'2023-09-18 01:08:05.351',TRUE),
+(E'Jijantes FC',1,1,4,E'aa2841',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999305/wa7uwlsvmmo0vohmwbcx.svg',E'2023-09-18 01:08:26.742',E'2023-09-18 01:08:26.742',TRUE),
+(E'El Barrio',1,1,5,E'0756a4',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999324/zyv9xzzevmqznts2h90s.svg',E'2023-09-18 01:08:46.016',E'2023-09-18 01:08:46.016',TRUE),
+(E'Saiyans FC',1,1,3,E'89b4d3',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999359/strpynuc0f6odlispbcu.svg',E'2023-09-18 01:09:20.652',E'2023-09-18 01:09:20.652',TRUE),
+(E'Los Troncos FC',1,1,11,E'1a7c5d',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999412/san1kwedqokpt2qsm0ww.png',E'2023-09-18 01:10:13.597',E'2023-09-18 01:10:13.597',TRUE),
+(E'Kunisports',1,1,9,E'20222a',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999483/d2hoaakqwrvmh8mujrb0.svg',E'2023-09-18 01:11:25.433',E'2023-09-18 01:11:25.433',TRUE),
+(E'Porcinos FC',1,1,8,E'fa188e',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999502/byfnmwvxtjrzvoczj21h.svg',E'2023-09-18 01:11:44.192',E'2023-09-18 01:11:44.192',TRUE),
+(E'Rayo de Barcelona',1,1,10,E'f8af3e',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999543/dymlgtqa9h6chtg9vyf2.svg',E'2023-09-18 01:12:25.131',E'2023-09-18 01:12:25.131',TRUE),
+(E'xBuyer Team',1,1,12,E'fcc415',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999560/u8didv99gmfayraq6jeq.svg',E'2023-09-18 01:12:42.458',E'2023-09-18 01:12:42.458',TRUE),
+(E'PIO FC',1,1,7,E'c1c1c1',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999589/xonxmbwi9orzndpylx2k.svg',E'2023-09-18 01:13:11.84',E'2023-09-18 01:13:11.84',TRUE),
+(E'1K FC',1,1,6,E'232675',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1694999624/we5nih5lwos5iwoosx5z.svg',E'2023-09-18 01:13:47.059',E'2023-09-18 01:13:47.059',TRUE),
+(E'Saiyans FC',1,2,3,E'89b4d3',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713555/ho0cegwqui1g5rardbna.svg',E'2023-10-07 21:19:16.74',E'2023-10-07 21:19:16.74',TRUE),
+(E'1K FC',1,2,6,E'232675',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713585/jpyg4nhd7osdrrovbjnj.svg',E'2023-10-07 21:19:47.196',E'2023-10-07 21:19:47.196',TRUE),
+(E'Aniquiladoras FC',1,2,2,E'e62d50',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713628/qzs5ivdym6cjlllagpss.svg',E'2023-10-07 21:20:29.837',E'2023-10-07 21:20:29.837',TRUE),
+(E'Kunitas',1,2,9,E'20222a',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713703/vfcpzpzipyizgl2oitey.svg',E'2023-10-07 21:21:44.598',E'2023-10-07 21:21:44.598',TRUE),
+(E'Rayo de Barcelona',1,2,10,E'f8af3e',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713725/qlthgb7oegiyt2qg62ip.svg',E'2023-10-07 21:22:06.662',E'2023-10-07 21:22:06.662',TRUE),
+(E'PIO FC',1,2,7,E'c1c1c1',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713746/kb5haikayyyglqjznnpp.svg',E'2023-10-07 21:22:27.658',E'2023-10-07 21:22:27.658',TRUE),
+(E'xBuyer Team',1,2,12,E'fcc415',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713762/gwapjqs8cstxfgeo3dyg.svg',E'2023-10-07 21:22:44.45',E'2023-10-07 21:22:44.45',TRUE),
+(E'El Barrio',1,2,5,E'0756a4',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713780/s1g7pbucfdpkfcxenv93.svg',E'2023-10-07 21:23:01.854',E'2023-10-07 21:23:01.854',TRUE),
+(E'Jijantas FC',1,2,4,E'aa2841',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713809/sjqfll28ykym5lxtaxs0.svg',E'2023-10-07 21:23:31.449',E'2023-10-07 21:23:31.449',TRUE),
+(E'Porcinas FC',1,2,8,E'fa188e',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713842/qeqzqsuqnlzkj9zhicq1.svg',E'2023-10-07 21:24:04.527',E'2023-10-07 21:24:04.527',TRUE),
+(E'Ultimate Móstoles',1,2,1,E'c08e4e',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713873/hwjxy5fmwzszrxj2iqoi.svg',E'2023-10-07 21:24:34.426',E'2023-10-07 21:24:34.426',TRUE),
+(E'Las Troncas FC',1,2,11,E'1a7c5d',E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696713912/xlbq72vhsp5u49yt4wnz.svg',E'2023-10-07 21:25:13.957',E'2023-10-07 21:25:13.957',TRUE);
 
 INSERT INTO "public"."Player"("name","lastName","nickName","positionId","clubId","playerTypeId","image","createdAt","updatedAt","isActive")
 VALUES
@@ -145,7 +145,7 @@ VALUES
 (E'Sergi',E'Cabré',E'',3,3,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695140457/ckth2m5gagmuz7ogkgvu.png',E'2023-09-19 16:20:57.487',E'2023-09-19 16:20:57.487',TRUE),
 (E'Pau',E'Fer',E'',3,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695140906/yaseestvaq4p71mscbvd.png',E'2023-09-19 16:28:26.443',E'2023-09-19 16:28:26.443',TRUE),
 (E'Gilles',E'Vidal',E'',3,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695140945/tcnxrhbhj8s3hfwqlikk.png',E'2023-09-19 16:29:05.358',E'2023-09-19 16:29:05.358',TRUE),
-(E'Álvaro',E'Arché',E'',3,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695140999/jf5jutqxulr0wkjidnmz.png',E'2023-09-19 16:29:59.839',E'2023-10-30 00:26:17.564',FALSE),
+(E'Álvaro',E'Arché',E'',3,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695140999/jf5jutqxulr0wkjidnmz.png',E'2023-09-19 16:29:59.839',E'2023-10-30 00:26:17.564',TRUE),
 (E'Xavi',E'Liébanas',E'',2,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695141056/wggfhej3deefzsajsu3o.png',E'2023-09-19 16:30:57.078',E'2023-10-30 00:31:44.982',TRUE),
 (E'Gabriel',E'Vidal',E'',3,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695141090/hluqahb1fki7g5fvqxky.png',E'2023-09-19 16:31:31.053',E'2023-09-19 16:31:31.053',TRUE),
 (E'Iker',E'González',E'',3,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1695141137/taqzx1per184qn4lrvwe.png',E'2023-09-19 16:32:17.432',E'2023-09-19 16:32:17.432',TRUE),
@@ -373,7 +373,36 @@ VALUES
 (E'Temo',E'Korkotashvili',E'',3,5,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696861539/mceeqxw8bwawkgqr6aka.png',E'2023-10-09 14:25:39.953',E'2023-10-09 14:25:39.953',TRUE),
 (E'Victor',E'Merchán',E'',3,9,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1696969419/qxik8qqmsyj4eismfgoo.png',E'2023-10-10 20:23:40.087',E'2023-10-30 01:57:16.832',FALSE),
 (E'Amelia',E'Romero',E'',2,18,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1697319034/cfdlzmcvjxerbwceluqc.png',E'2023-10-14 21:30:34.279',E'2023-10-30 03:07:26.077',FALSE),
-(E'Marta',E'Yañez',E'',4,18,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1697319105/gjtymdove8xyde1pl89g.png',E'2023-10-14 21:31:46.158',E'2023-10-30 03:11:48.326',FALSE);
+(E'Marta',E'Yañez',E'',4,18,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1697319105/gjtymdove8xyde1pl89g.png',E'2023-10-14 21:31:46.158',E'2023-10-30 03:11:48.326',FALSE),
+(E'Iván',E'Fajardo',E'',1,4,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698625743/efwykjydaqasdyy48emq.png',E'2023-10-30 00:29:03.735',E'2023-10-30 00:29:03.735',TRUE),
+(E'Guillem',E'Rodriguez',E'',2,9,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698631328/phsk68qj1h4jpynmqc88.png',E'2023-10-30 02:02:08.812',E'2023-10-30 02:02:17.676',TRUE),
+(E'Hugo',E'Fraile',E'',3,9,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698631491/yntv1djswzkdjtjpucaw.png',E'2023-10-30 02:04:51.415',E'2023-10-30 02:04:51.415',TRUE),
+(E'Carla',E'Muñoz',E'',1,18,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698634925/j3zme3srzfuzrznglhii.png',E'2023-10-30 03:02:05.805',E'2023-10-30 03:02:05.805',TRUE),
+(E'Marc',E'Torrejón',E'',2,11,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698635413/ufaqts0m0muhjwa4mwy0.png',E'2023-10-30 03:10:13.431',E'2023-10-30 03:10:13.431',TRUE),
+(E'Maria',E'Brau',E'',4,18,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698635579/tijgw1pnrbhdq4bjt5dr.png',E'2023-10-30 03:12:59.532',E'2023-10-30 03:12:59.532',TRUE),
+(E'Andrea',E'Porta',E'',4,18,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698635684/dhjredgnuwn9m71dgqmv.png',E'2023-10-30 03:14:44.383',E'2023-10-30 03:14:44.383',TRUE),
+(E'Pablo',E'Hernández',E'',3,8,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698636034/gczbakhuu3lpfrr6dl76.png',E'2023-10-30 03:20:34.381',E'2023-10-30 03:20:34.381',TRUE),
+(E'Iván',E'Mateo',E'',3,12,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698637298/ntkl5uwibx4ys54maemo.png',E'2023-10-30 03:41:38.903',E'2023-10-30 03:41:38.903',TRUE),
+(E'Rubén',E'Solis',E'',4,12,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698637363/hgymegqucvruz7zz4tml.png',E'2023-10-30 03:42:44.048',E'2023-10-30 03:42:44.048',TRUE),
+(E'Jordi',E'Gómez',E'',3,7,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1698637802/p6p0gemhpkqtkyehpvnp.png',E'2023-10-30 03:50:03.048',E'2023-10-30 03:57:54.514',TRUE),
+(E'Natali',E'Rosales',E'',3,20,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1699242907/lkot3hhjnxrnitkzozhg.png',E'2023-11-06 03:55:07.525',E'2023-11-06 03:55:07.525',TRUE),
+(E'Leandro',E'Marín',E'',2,5,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1699243519/bosyvp64pb9fvqasow03.png',E'2023-11-06 04:05:19.973',E'2023-11-06 04:06:28.136',TRUE),
+(E'Marta',E'Perarnau',E'',2,23,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1699247398/l4hdhqpmil6svk5fb43q.png',E'2023-11-06 04:13:24.231',E'2023-11-06 05:09:59.038',TRUE),
+(E'Alba',E'Bairaguet',E'',3,15,3,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1699244415/bi56oyxblk39fljmsxhm.png',E'2023-11-06 04:20:15.726',E'2023-11-06 04:20:15.726',TRUE),
+(E'Laura',E'Casas',E'',4,17,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1699816054/awkkgsa2skd1kw5yn1s0.png',E'2023-11-12 19:07:34.627',E'2023-11-12 19:07:34.627',TRUE),
+(E'Víctor',E'Vázquez',E'',3,3,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700965357/ev4gel84tc1gelcx0w7l.png',E'2023-11-12 19:20:41.903',E'2023-11-26 02:22:38.287',TRUE);
+(E'Felipe',E'Álvarez',E'',4,11,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1699817576/cln4hbwlnogap5ulxpch.png',E'2023-11-12 19:32:57.24',E'2023-11-12 19:32:57.24',TRUE),
+(E'Emma',E'Dahlmann',E'',3,13,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700964350/bbtv2diboen73171npzl.png',E'2023-11-26 02:05:50.831',E'2023-11-26 02:05:50.831',TRUE),
+(E'Alberto',E'García',E'',4,5,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700964603/wy8j04mtt7bgdvwecvyv.png',E'2023-11-26 02:10:03.38',E'2023-11-26 02:10:03.38',TRUE),
+(E'Iker',E'Alcarazo',E'',4,10,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700964999/i1ng0j71zg2nxxm6cpom.png',E'2023-11-26 02:16:39.934',E'2023-11-26 02:16:39.934',TRUE),
+(E'Aozora',E'Kishimoto',E'',3,12,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700965821/xckfooqmctzt1pixcafy.png',E'2023-11-26 02:30:21.261',E'2023-11-26 02:30:21.261',TRUE),
+(E'Ana',E'Alcocer',E'',4,14,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700966560/v36gv2k21oedjetxuqkx.png',E'2023-11-26 02:42:41.209',E'2023-11-26 02:42:41.209',TRUE),
+(E'Michelle',E'Gennarelli',E'',4,11,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700967192/hy3kt8op2qxuaqd1vu47.png',E'2023-11-26 02:53:12.777',E'2023-11-26 02:53:12.777',TRUE),
+(E'Kun',E'Aguero',E'',4,7,4,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700967806/wlgavydtvs9vkmot8voo.png',E'2023-11-26 03:03:27.035',E'2023-11-26 03:03:27.035',TRUE),
+(E'Joana',E'Roig',E'',4,24,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700971224/rph8vdrpjqsoqgaqupey.png',E'2023-11-26 04:00:24.743',E'2023-11-26 04:00:24.743',TRUE),
+(E'Alba',E'Vidal',E'',4,24,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700971514/ykqwvutmudckl1c0snio.png',E'2023-11-26 04:05:14.593',E'2023-11-26 04:06:19.829',TRUE),
+(E'Spursito',E'',E'',4,9,2,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700972031/mbcvyf1trnevu5xb5wmy.png',E'2023-11-26 04:13:52.535',E'2023-11-26 04:13:52.535',TRUE),
+(E'Carlos',E'Ferres',E'',3,3,1,E'https://res.cloudinary.com/dvosjxlwi/image/upload/v1700972655/ejjse2yiuz1epxsmqiln.png',E'2023-11-26 04:24:16.203',E'2023-11-26 04:24:16.203',TRUE);
 
 INSERT INTO "public"."Tournament_Group"("name","clubId","tournamentId","createdAt","updatedAt","isActive")
 VALUES
@@ -400,7 +429,19 @@ VALUES
 (E'B',17,2,E'2023-10-08 02:34:59.429',E'2023-10-08 02:34:59.429',TRUE),
 (E'B',19,2,E'2023-10-08 02:34:59.429',E'2023-10-08 02:34:59.429',TRUE),
 (E'B',21,2,E'2023-10-08 02:34:59.429',E'2023-10-08 02:34:59.429',TRUE),
-(E'B',23,2,E'2023-10-08 02:34:59.429',E'2023-10-08 02:34:59.429',TRUE);
+(E'B',23,2,E'2023-10-08 02:34:59.429',E'2023-10-08 02:34:59.429',TRUE),
+(E'A',1,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'A',2,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'A',3,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'A',6,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'A',7,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'A',12,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'B',4,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'B',11,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'B',8,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'B',9,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'B',5,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE),
+(E'B',10,3,E'2023-10-27 22:55:36.498',E'2023-10-27 22:55:36.498',TRUE);
 
 INSERT INTO "public"."Tournament_Round"("round","tournamentId","clubIdHome","clubIdAway","createdAt","updatedAt","isActive")
 VALUES
@@ -479,4 +520,41 @@ VALUES
 (8,1,6,2,E'2023-10-11 21:32:47.988',E'2023-10-11 21:32:47.988',TRUE),
 (8,2,15,18,E'2023-10-11 21:33:25.508',E'2023-10-11 21:33:25.508',TRUE),
 (9,2,13,15,E'2023-10-14 21:38:05.742',E'2023-10-14 21:38:05.742',TRUE),
-(9,1,1,6,E'2023-10-14 21:48:13.399',E'2023-10-14 21:48:13.399',TRUE);
+(9,1,1,6,E'2023-10-14 21:48:13.399',E'2023-10-14 21:48:13.399',TRUE),
+(1,3,4,5,E'2023-10-28 12:18:25.517',E'2023-10-28 12:18:25.517',TRUE),
+(1,3,10,9,E'2023-10-28 12:18:25.517',E'2023-10-28 12:18:25.517',TRUE),
+(1,3,1,6,E'2023-10-28 12:18:25.517',E'2023-10-28 12:18:25.517',TRUE),
+(1,3,3,2,E'2023-10-28 12:18:25.517',E'2023-10-28 12:18:25.517',TRUE),
+(1,3,11,8,E'2023-10-28 12:18:25.517',E'2023-10-28 12:18:25.517',TRUE),
+(1,3,12,7,E'2023-10-28 12:18:25.517',E'2023-10-28 12:18:25.517',TRUE),
+(2,3,11,10,E'2023-10-28 12:19:26.281',E'2023-10-28 12:19:26.281',TRUE),
+(2,3,8,5,E'2023-10-28 12:19:26.281',E'2023-10-28 12:19:26.281',TRUE),
+(2,3,12,2,E'2023-10-28 12:19:26.281',E'2023-10-28 12:19:26.281',TRUE),
+(2,3,9,4,E'2023-10-28 12:19:26.281',E'2023-10-28 12:19:26.281',TRUE),
+(2,3,1,3,E'2023-10-28 12:19:26.281',E'2023-10-28 12:19:26.281',TRUE),
+(2,3,6,7,E'2023-10-28 12:19:26.281',E'2023-10-28 12:19:26.281',TRUE),
+(3,3,4,11,E'2023-10-28 12:20:27.57',E'2023-10-28 12:20:27.57',TRUE),
+(3,3,5,9,E'2023-10-28 12:20:27.57',E'2023-10-28 12:20:27.57',TRUE),
+(3,3,7,2,E'2023-10-28 12:20:27.57',E'2023-10-28 12:20:27.57',TRUE),
+(3,3,6,3,E'2023-10-28 12:20:27.57',E'2023-10-28 12:20:27.57',TRUE),
+(3,3,10,8,E'2023-10-28 12:20:27.57',E'2023-10-28 12:20:27.57',TRUE),
+(3,3,12,1,E'2023-10-28 12:20:27.57',E'2023-10-28 12:20:27.57',TRUE),
+(4,3,4,8,E'2023-10-28 12:21:21.091',E'2023-10-28 12:21:21.091',TRUE),
+(4,3,5,10,E'2023-10-28 12:21:21.091',E'2023-10-28 12:21:21.091',TRUE),
+(4,3,3,12,E'2023-10-28 12:21:21.091',E'2023-10-28 12:21:21.091',TRUE),
+(4,3,9,11,E'2023-10-28 12:21:21.091',E'2023-10-28 12:21:21.091',TRUE),
+(4,3,2,6,E'2023-10-28 12:21:21.091',E'2023-10-28 12:21:21.091',TRUE),
+(4,3,1,7,E'2023-10-28 12:21:21.091',E'2023-10-28 12:21:21.091',TRUE),
+(5,3,11,5,E'2023-10-28 12:22:23.212',E'2023-10-28 12:22:23.212',TRUE),
+(5,3,10,4,E'2023-10-28 12:22:23.212',E'2023-10-28 12:22:23.212',TRUE),
+(5,3,8,9,E'2023-10-28 12:22:23.212',E'2023-10-28 12:22:23.212',TRUE),
+(5,3,7,3,E'2023-10-28 12:22:23.212',E'2023-10-28 12:22:23.212',TRUE),
+(5,3,6,12,E'2023-10-28 12:22:23.212',E'2023-10-28 12:22:23.212',TRUE),
+(5,3,2,1,E'2023-10-28 12:22:23.212',E'2023-10-28 12:22:23.212',TRUE),
+(6,3,1,9,E'2023-11-26 04:40:46.969',E'2023-11-26 04:40:46.969',TRUE),
+(6,3,10,12,E'2023-11-26 04:40:46.969',E'2023-11-26 04:40:46.969',TRUE),
+(6,3,7,4,E'2023-11-26 04:40:46.969',E'2023-11-26 04:40:46.969',TRUE),
+(6,3,8,3,E'2023-11-26 04:40:46.969',E'2023-11-26 04:40:46.969',TRUE),
+(7,3,8,7,E'2023-11-26 04:41:17.116',E'2023-11-26 04:41:17.116',TRUE),
+(7,3,1,10,E'2023-11-26 04:41:17.116',E'2023-11-26 04:41:17.116',TRUE),
+(8,3,8,1,E'2023-11-26 04:41:37.788',E'2023-11-26 04:41:37.788',TRUE);
